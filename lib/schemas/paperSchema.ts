@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { TagIdSchema } from "./tagSchema";
 
 /**
  * Paper CMS Schema
@@ -15,7 +16,7 @@ export const PaperSchema = z.object({
   year: z.coerce.number({ message: "Year must be a number" }).int(),
   venue: z.string({ message: "Missing paper venue" }),
   tags: z.array(
-    z.string({ message: "Tags field must be an array of strings" }),
+    z.string({ message: "Tags field must be an array of strings" }).regex(TagIdSchema),
     { message: "Tags field must be an array" }
   ),
 
