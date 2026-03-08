@@ -1,10 +1,7 @@
 import fs from "fs";
 import path from "path";
-import { PaperSchema } from "@/lib/schemas/paperSchema.ts";
+import { PaperSchema } from "@/lib/schemas/paperSchema";
 
-/**
- * This doesn't work now because the path @/lib/schemas/paperSchema.ts is still unavailable.
- */
 const papersDirectory = path.join(process.cwd(), "content/papers");
 export type Paper = ReturnType<typeof PaperSchema.parse>;
 
