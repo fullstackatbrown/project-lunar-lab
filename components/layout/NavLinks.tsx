@@ -1,20 +1,18 @@
 import Link from "next/link";
 
 const links = [
-  { href: "/people", label: "People" },
-  { href: "/research", label: "Research" },
-  { href: "/blog", label: "Blog" },
+  { href: "/", label: "Home" },
+  { href: "/about", label: "Join the Lab" },
+  { href: "/member", label: "Members" },
+  { href: "/publications", label: "Research" },
+  { href: "/blog", label: "News" },
 ];
 
 export default function NavLinks() {
   return (
-    <nav className="flex gap-8">
+    <nav style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
       {links.map((link) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          className="text-[13px] font-sans tracking-tight hover:opacity-100 opacity-70 transition-opacity"
-        >
+        <Link key={link.href} href={link.href}>
           {link.label}
         </Link>
       ))}
