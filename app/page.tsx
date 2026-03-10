@@ -15,10 +15,10 @@ export default function HomePage() {
       <section style={{ marginBottom: 28 }}>
         <h2 style={{ marginBottom: 10, fontSize: 22 }}>What this site will support</h2>
         <ul style={{ marginTop: 0, lineHeight: 1.8 }}>
-          <li>Landing / About / Members / Research pages</li>
+          <li>Landing / Join the Lab / Members / Publications pages</li>
           <li>A GitHub-based content workflow (no database)</li>
           <li>Tagging + filtering across content</li>
-          <li>Blog-style updates (optional)</li>
+          <li>News-style updates (optional)</li>
           <li>Links to external media (YouTube, X, etc.)</li>
         </ul>
       </section>
@@ -39,7 +39,7 @@ export default function HomePage() {
         <h2 style={{ marginBottom: 10, fontSize: 22 }}>Next steps</h2>
         <ol style={{ marginTop: 0, lineHeight: 1.8 }}>
           <li>Define content schemas and sample content files</li>
-          <li>Render content on pages (papers/talks/blog)</li>
+          <li>Render content on pages (papers/talks/news)</li>
           <li>Add CI validation so bad content cannot break builds</li>
           <li>Design pass in Figma → apply styles to components</li>
         </ol>
@@ -47,4 +47,3 @@ export default function HomePage() {
     </main>
   );
 }
-
