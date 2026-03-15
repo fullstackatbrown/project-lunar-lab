@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { tagSchema, Tag } from '../schemas/tagSchema';
+import { TagSchema, Tag, TagIdSchema } from '../schemas/tagSchema';
 
 const TAGS_DIRECTORY = path.join(process.cwd(), 'content', 'tags');
 
@@ -26,11 +26,17 @@ export function getAllTags(): Tag[] {
         const filePath = path.join(TAGS_DIRECTORY, file);
         const fileContent = fs.readFileSync(filePath, "utf-8");
 
-        // try parse and validate the tag
+        // try parse tag
         try {
             const parsedTag = JSON.parse(fileContent);
-            const tag = tagSchema.parse(parsedTag);
-        
+            const tag = TagSchema.parse(parsedTag);
+            
+            // validate tag id
+            if (!TagIdSchema.test(tag.id)) {
+                console.warn(`Invalid TagID format: ${tag.id}`);
+                continue;
+            }
+                    
             // checks if ID already exists
             if (seenIDs.has(tag.id)) {
                 console.warn(`Duplicate TagID: ${tag.id} in ${file}. Skipping!`);
@@ -46,6 +52,7 @@ export function getAllTags(): Tag[] {
 
     }
 
-    return tagsList;
+    // return sorted by label alphabetically 
+    return tagsList.sort((a, b) => a.label.localeCompare(b.label));
 
 }
