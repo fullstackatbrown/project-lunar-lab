@@ -1,58 +1,49 @@
+import "server-only";
+
 import fs from "fs";
 import path from "path";
-import { TagSchema, Tag, TagIdSchema } from '../schemas/tagSchema';
+import { TagSchema, Tag } from "../schemas/tagSchema";
 
-const TAGS_DIRECTORY = path.join(process.cwd(), 'content', 'tags');
+const TAGS_DIRECTORY = path.join(process.cwd(), "content", "tags");
 
 export function getAllTags(): Tag[] {
-    
-    // read all JSON files in the tags directory
-    const tagFiles = fs.readdirSync(TAGS_DIRECTORY).filter(file => file.endsWith('.json'));
+  const tagFiles = fs
+    .readdirSync(TAGS_DIRECTORY)
+    .filter((file) => file.endsWith(".json"))
+    .filter((file) => !file.startsWith("_"));
 
-    // tracks seen IDs
-    const seenIDs = new Set<string>();
+  const seenIds = new Set<string>();
+  const tagsList: Tag[] = [];
 
-    // array to hold valid tags
-    const tagsList: Tag[] = [];
+  for (const file of tagFiles) {
+    const filePath = path.join(TAGS_DIRECTORY, file);
+    const fileContent = fs.readFileSync(filePath, "utf-8");
 
-    // iterate over each tag file
-    for (const file of tagFiles){
+    let parsedJson: unknown;
 
-        // skip template file
-        if (file == 'tag-template.json') 
-            continue;
-
-        // read file content
-        const filePath = path.join(TAGS_DIRECTORY, file);
-        const fileContent = fs.readFileSync(filePath, "utf-8");
-
-        // try parse tag
-        try {
-            const parsedTag = JSON.parse(fileContent);
-            const tag = TagSchema.parse(parsedTag);
-            
-            // validate tag id
-            if (!TagIdSchema.test(tag.id)) {
-                console.warn(`Invalid TagID format: ${tag.id}`);
-                continue;
-            }
-                    
-            // checks if ID already exists
-            if (seenIDs.has(tag.id)) {
-                console.warn(`Duplicate TagID: ${tag.id} in ${file}. Skipping!`);
-                continue;
-            }
-
-            tagsList.push(tag);
-            seenIDs.add(tag.id);
-
-        } catch (error) {
-            console.error(`Error with Tag File ${file}:`, error);
-        }
-
+    try {
+      parsedJson = JSON.parse(fileContent);
+    } catch {
+      throw new Error(`Invalid JSON in tag file: ${file}`);
     }
 
-    // return sorted by label alphabetically 
-    return tagsList.sort((a, b) => a.label.localeCompare(b.label));
+    const result = TagSchema.safeParse(parsedJson);
 
+    if (!result.success) {
+      throw new Error(
+        `Invalid tag schema in file ${file}: ${result.error.message}`
+      );
+    }
+
+    const tag = result.data;
+
+    if (seenIds.has(tag.id)) {
+      throw new Error(`Duplicate tag ID "${tag.id}" found in file: ${file}`);
+    }
+
+    seenIds.add(tag.id);
+    tagsList.push(tag);
+  }
+
+  return tagsList.sort((a, b) => a.label.localeCompare(b.label));
 }
