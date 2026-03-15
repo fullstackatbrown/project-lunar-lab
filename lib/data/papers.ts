@@ -1,9 +1,49 @@
 import fs from "fs";
 import path from "path";
-import { PaperSchema } from "@/lib/schemas/paperSchema";
+import { PaperSchema, type Paper } from "@/lib/schemas/paperSchema";
 
 const papersDirectory = path.join(process.cwd(), "content/papers");
-export type Paper = ReturnType<typeof PaperSchema.parse>;
+
+/**
+ * Reads all .json files in content/papers
+ */
+function getPaperFileNames(): string[] {
+  if (!fs.existsSync(papersDirectory)) {
+    console.warn(`Papers directory does not exist: ${papersDirectory}`);
+    return [];
+  }
+
+  return fs
+    .readdirSync(papersDirectory)
+    .filter((fileName) => fileName.endsWith(".json"));
+}
+
+/**
+ * Reads, parses, and validates one paper JSON file.
+ * Returns null if the file is invalid.
+ */
+function readPaperFile(fileName: string): Paper | null {
+  const fullPath = path.join(papersDirectory, fileName);
+
+  try {
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const jsonData = JSON.parse(fileContents);
+
+    const result = PaperSchema.safeParse(jsonData);
+
+    if (!result.success) {
+      console.error(`Invalid paper JSON: ${fileName}`);
+      console.error(result.error.format());
+      return null;
+    }
+
+    return result.data;
+  } catch (error) {
+    console.error(`Failed to read or parse paper file: ${fileName}`);
+    console.error(error);
+    return null;
+  }
+}
 
 /**
  * getAllPapers()
@@ -11,24 +51,33 @@ export type Paper = ReturnType<typeof PaperSchema.parse>;
  * - Reads all JSON files
  * - Parses them
  * - Validates them
- * - Sorts them (newest first)
+ * - Skips invalid files instead of crashing the whole page
+ * - Warns on duplicate IDs
+ * - Sorts papers (newest first)
  */
 export function getAllPapers(): Paper[] {
-    const fileNames = fs.readdirSync(papersDirectory);
+  const fileNames = getPaperFileNames();
 
-    const papers = fileNames.map((fileName) => {
-        const fullPath = path.join(papersDirectory, fileName);
+  const papers: Paper[] = [];
 
-        const fileContents = fs.readFileSync(fullPath, "utf8");
+  for (const fileName of fileNames) {
+    const paper = readPaperFile(fileName);
 
-        const jsonData = JSON.parse(fileContents);
+    if (paper) {
+      papers.push(paper);
+    }
+  }
 
-        const validatedData = PaperSchema.parse(jsonData);
+  const seenIds = new Set<string>();
 
-        return validatedData;
-    });
+  for (const paper of papers) {
+    if (seenIds.has(paper.id)) {
+      console.warn(`Duplicate paper id found: ${paper.id}`);
+    }
+    seenIds.add(paper.id);
+  }
 
-    return papers.sort((a, b) => b.year - a.year);
+  return papers.sort((a, b) => b.year - a.year);
 }
 
 /**
@@ -37,7 +86,5 @@ export function getAllPapers(): Paper[] {
  * Returns one paper by matching ID
  */
 export function getPaperById(id: string): Paper | undefined {
-    const papers = getAllPapers();
-
-    return papers.find((paper) => paper.id === id);
+  return getAllPapers().find((paper) => paper.id === id);
 }

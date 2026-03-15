@@ -1,11 +1,10 @@
 import Link from "next/link";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "Join the Lab" },
-  { href: "/member", label: "Members" },
   { href: "/publications", label: "Research" },
+  { href: "/member", label: "Members" },
   { href: "/blog", label: "News" },
+  { href: "/about", label: "Join the Lab" },
 ];
 
 export default function NavLinks() {
