@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useTheme } from "../theme/ThemeProvider";
 
 const links = [
   { href: "/publications", label: "Research" },
@@ -8,6 +11,8 @@ const links = [
 ];
 
 export default function NavLinks() {
+  const { toggleTheme } = useTheme();
+
   return (
     <nav style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
       {links.map((link) => (
@@ -15,6 +20,9 @@ export default function NavLinks() {
           {link.label}
         </Link>
       ))}
+      <button onClick={toggleTheme}>
+        🌙
+      </button>
     </nav>
   );
 }
