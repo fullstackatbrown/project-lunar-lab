@@ -1,3 +1,17 @@
+"use client";
+
+import { createContext, useContext, useEffect, useState } from "react";
+
+type Theme = "light" | "dark";
+
+type ThemeContextType = {
+  theme: Theme;
+  toggleTheme: () => void;
+};
+
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
+
 /**
  * ThemeProvider
  *
@@ -26,3 +40,32 @@
  * This file contains the core logic for the theme system and should
  * wrap the entire application (via app/layout.tsx).
  */
+
+export default function ThemeProvider({ children }: { children: React.ReactNode }) {
+    const [theme, setTheme] = useState<"light" | "dark">(() => {
+        const storedTheme = localStorage.getItem("theme");
+        return storedTheme === "dark" ? "dark" : "light";
+    });
+
+    const toggleTheme = async () => {
+        setTheme(theme === "dark" ? "light" : "dark");
+    }
+
+    useEffect(() => {
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+    }, [theme]);
+
+    return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+// Hook
+export function useTheme() {
+  const ctx = useContext(ThemeContext);
+  if (!ctx) throw new Error("useTheme must be used within ThemeProvider");
+  return ctx;
+}
