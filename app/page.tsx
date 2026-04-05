@@ -1,6 +1,6 @@
 export default function HomePage() {
   return (
-    <main style={{ maxWidth: 960, margin: "0 auto", padding: "48px 24px" }}>
+    <main style={{ maxWidth: 960, margin: "0 auto", padding: "48px 24px"}}>
       <header style={{ marginBottom: 32 }}>
         <h1 style={{ margin: 0, fontSize: 40, lineHeight: 1.2 }}>
           LUNAR Lab
