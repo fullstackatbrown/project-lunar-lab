@@ -1,8 +1,10 @@
 import { z } from "zod";
 
+export const TAG_ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
 export const TagIdSchema = z
   .string()
-  .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Invalid tag id format");
+  .regex(TAG_ID_PATTERN, "Invalid tag id format");
 
 export const TagColorSchema = z
   .string()

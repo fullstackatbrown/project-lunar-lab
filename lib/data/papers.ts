@@ -15,7 +15,8 @@ function getPaperFileNames(): string[] {
 
   return fs
     .readdirSync(papersDirectory)
-    .filter((fileName) => fileName.endsWith(".json"));
+    .filter((fileName) => fileName.endsWith(".json"))
+    .filter((fileName) => !fileName.startsWith("_") && fileName !== "paper-template.json");
 }
 
 /**

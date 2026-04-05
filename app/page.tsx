@@ -1,49 +1,61 @@
-export default function HomePage() {
+export default function Page() {
   return (
-    <main style={{ maxWidth: 960, margin: "0 auto", padding: "48px 24px"}}>
-      <header style={{ marginBottom: 32 }}>
-        <h1 style={{ margin: 0, fontSize: 40, lineHeight: 1.2 }}>
-          LUNAR Lab
+    <main className="page">
+
+      {/* Hero */}
+      <section className="hero">
+        <h1 className="text-h2 hero-title">
+          Language Understanding and Representation Lab
         </h1>
-        <p style={{ marginTop: 12, fontSize: 18, lineHeight: 1.6 }}>
-          Placeholder landing page for the LUNAR Lab website rebuild. Design will
-          be added later — the focus right now is content structure and a
-          GitHub-based CMS workflow.
-        </p>
-      </header>
 
-      <section style={{ marginBottom: 28 }}>
-        <h2 style={{ marginBottom: 10, fontSize: 22 }}>What this site will support</h2>
-        <ul style={{ marginTop: 0, lineHeight: 1.8 }}>
-          <li>Landing / Join the Lab / Members / Publications pages</li>
-          <li>A GitHub-based content workflow (no database)</li>
-          <li>Tagging + filtering across content</li>
-          <li>News-style updates (optional)</li>
-          <li>Links to external media (YouTube, X, etc.)</li>
-        </ul>
-      </section>
+        <div className="hero-carousel">
+          <div className="carousel-placeholder" />
 
-      <section style={{ marginBottom: 28 }}>
-        <h2 style={{ marginBottom: 10, fontSize: 22 }}>External links</h2>
-        <p style={{ marginTop: 0, lineHeight: 1.8 }}>
-          YouTube: <a href="#" target="_blank" rel="noreferrer">TBD</a>
-          <br />
-          X (Twitter): <a href="#" target="_blank" rel="noreferrer">TBD</a>
-        </p>
-        <p style={{ marginTop: 8, fontSize: 14, opacity: 0.75 }}>
-          (Links will be updated once the lab confirms official URLs.)
+          <div className="carousel-dots">
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
+        </div>
+
+        <p className="hero-description text-body-lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
         </p>
       </section>
 
-      <section>
-        <h2 style={{ marginBottom: 10, fontSize: 22 }}>Next steps</h2>
-        <ol style={{ marginTop: 0, lineHeight: 1.8 }}>
-          <li>Define content schemas and sample content files</li>
-          <li>Render content on pages (papers/talks/news)</li>
-          <li>Add CI validation so bad content cannot break builds</li>
-          <li>Design pass in Figma → apply styles to components</li>
-        </ol>
+      {/* News */}
+      <section className="news-section">
+        <div className="news-header">
+          <h2 className="text-h4">Recent News</h2>
+          <span className="arrow">{'>'}</span>
+        </div>
+
+        <div className="news-list">
+          {[1, 2, 3].map((item) => (
+            <div key={item} className="news-item">
+              <div className="news-thumbnail" />
+
+              <div className="news-content">
+                <div className="news-title text-h4">
+                  How Can Deep Neural Networks Inform Theory in Psychological Science?
+                </div>
+
+                <div className="news-meta">
+                  <span className="news-desc text-body-sm">
+                    Lorem ipsum dolor sit amet...
+                  </span>
+
+                  <span className="news-date text-label">
+                    JANUARY 2025
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
+
     </main>
   );
 }
