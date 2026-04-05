@@ -11,7 +11,7 @@ export default function PublicationsPage() {
     <main className="min-h-screen px-4 py-16">
       <div className="mx-auto max-w-6xl">
         <header className="mb-10 border-b border-black/10 pb-4">
-          <h1 className="text-4xl font-semibold tracking-tight">Publications</h1>
+          <h1 className="italic text-4xl font tracking-tight">Papers</h1>
           <p className="mt-2 text-sm text-black/60">
             Papers are loaded from the Git-backed CMS content folder.
           </p>

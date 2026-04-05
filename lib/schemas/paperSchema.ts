@@ -21,7 +21,7 @@ export const PaperSchema = z.object({
   venue: z.string({ message: "Missing paper venue" }),
 
   tags: z.array(
-    z.string({ message: "Tags field must be an array of strings" }).regex(TagIdSchema),
+    TagIdSchema,
     { message: "Tags field must be an array" }
   ),
 
