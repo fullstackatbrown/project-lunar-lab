@@ -12,9 +12,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
+
 :root[data-theme="dark"] {
   --background: #0a0a0a;
-  --foreground: #ededed;
+  --foreground: #F9E4C8;
 }
 
 
