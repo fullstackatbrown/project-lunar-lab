@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FFFFFF;
+  --foreground: #323C50;
+  --border: #323C50;
+}
+
+.dark {
+  --background: #232121;
+  --foreground: #F9E4C8;
+  --border: #F9E4C8;
 }
 
 @theme inline {
@@ -14,13 +21,207 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #232121;
+    --foreground: #F9E4C8;
+    --border: #F9E4C8;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'FreightText Pro', 'FreightTextProBook', 'Be Vietnam Pro', Georgia, serif;
+}
+
+*, *::before, *::after {
+  font-family: inherit;
+}
+
+
+.page {
+  padding: 60px 40px 60px 90px;
+  max-width: 1800px;
+}
+
+.section {
+  margin-bottom: 80px;
+}
+
+.section-title {
+  font-family: 'FreightTextProBook', Georgia, serif;
+  font-size: 64px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  color: var(--foreground);
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border);
+}
+
+.image-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px 24px 20px 0; 
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: var(--foreground);
+}
+
+.image-card:nth-child(odd) {
+  border-right: 1px solid var(--border);
+  padding-right: 40px;
+}
+
+.image-card:nth-child(even) {
+  padding-left: 24px;
+}
+
+.image-card img {
+  width: 325px;
+  height: 197px;
+  object-fit: cover;
+  object-position: top center;
+  flex-shrink: 0;
+  display: block;
+}
+
+.image-card:not(:has(img)) {
+  align-items: center;
+  min-height: unset;
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+.image-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.image-card-name {
+  font-family: 'FreightTextProBook', Georgia, serif;
+  font-size: 36px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1;
+  color: var(--foreground);
+}
+
+.image-card-title {
+  font-family: 'FreightTextProBook', Georgia, serif;
+  font-size: 24px;
+  font-style: italic;
+  opacity: 0.85;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.description {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 19px;
+  line-height: 28px;
+  font-weight: 400;
+  opacity: 0.75;
+}
+
+.image-card:not(:has(img)) .image-card-name {
+  font-size: 36px;
+}
+
+.image-card:not(:has(img)) .image-card-title {
+  font-size: 22px;
+  margin-bottom: 0;
+}
+
+.alumni-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  grid-template-columns: auto 1fr auto 1fr;
+}
+
+.alumni-item {
+  display: contents;
+}
+
+.alumni-name {
+  font-family: 'FreightTextProBook', Georgia, serif;
+  font-size: 32px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--foreground);
+  padding: 16px 16px 16px 0;
+  white-space: nowrap;
+  align-self: center;
+}
+
+.alumni-path {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 16px;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+  padding: 16px 40px 16px 0;
+  align-self: center;
+}
+
+.alumni-path span {
+  margin: 0 2px;
+}
+
+.collaborators-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border);
+}
+
+.collaborator-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 40px 24px 0;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+}
+
+.collaborator-item:nth-child(odd) {
+  border-right: 1px solid var(--border);
+}
+
+.collaborator-item:nth-child(even) {
+  padding-left: 24px;
+}
+
+.collaborator-logo {
+  width: 325px;
+  height: 197px;
+  object-fit: cover;
+  object-position: top center;
+  flex-shrink: 0;
+  display: block;
+}
+
+.collaborator-name {
+  font-family: 'FreightTextProBook', Georgia, serif;
+  font-size: 48px;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 6px;
+  color: var(--foreground);
 }
