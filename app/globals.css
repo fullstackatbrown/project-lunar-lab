@@ -2,7 +2,19 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #323C50;
+  --footer-bg: url(/astronaut-light-mode.png);
+  --logo-outer-circle: #F9E4C8;
+
+  --logo-text: #F9E4C8;
+}
+
+[data-theme = "dark"] {
+  --background: #232121;
+  --foreground: #F9E4C8;
+  --footer-bg: url(/astronaut-dark-mode.png);
+  --logo-outer-circle: #323C50;
+  --logo-text: #323C50;
 }
 
 @theme inline {
@@ -20,7 +32,95 @@
 
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.menu{
+  display: flex;
+  gap: 40px;
+  font-size: 21px;
+  font-family: Be Vietnam Pro;
+  font-weight: 400;
+}
+
+.basic_paragraph{
+  font-family: Be Vietnam Pro;
+  font-weight: 400;
+  font-size: 19px;
+}
+
+
+h1 {
+  font-family: FreightText Pro;
+  font-style: italic;
+  transform: skewX(5deg);
+  font-size: 100px;
+  font-weight: 400;
+}
+
+h2 {
+  font-family: FreightText Pro;
+  font-style: italic;
+  transform: skewX(5deg);
+  font-size: 70px;
+  font-weight: 400;
+}
+
+
+h3 {
+  font-family: "FreightText Pro";
+  font-style: italic;
+  font-size: 50px;
+  font-weight: 400;
+}
+
+h4 {
+  font-family: FreightText Pro;
+  font-style: italic;
+  transform: skewX(5deg);
+  font-size: 30px;
+  font-weight: 400;
+}
+
+p {
+  font-family: Be Vietnam Pro;
+  font-weight: 400;
+  font-size: 19px;
+}
+.header {
+  padding: 40px 60px;
+  border-bottom: 1px solid #ddd;
+  height: 150px;
+  max-width: 1728px;
+}
+
+.moon_button{
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.footer{
+  padding: 60px 80px;
+  border-top: 1px solid #ddd;
+  margin-top: 80px;
+  height: 301px;
+
+  background-image: var(--footer-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.logo-outer-circle{
+  fill: var(--logo-outer-circle);
+}
+
+.logo-text{
+  fill: var(--logo-text)
+}
+
+.logo-inner-circle{
+  fill: var(--foreground);
 }
