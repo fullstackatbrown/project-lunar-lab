@@ -42,13 +42,17 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
  */
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
-    const [theme, setTheme] = useState<"light" | "dark">(() => {
-        const storedTheme = localStorage.getItem("theme");
-        return storedTheme === "dark" ? "dark" : "light";
-    });
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window === "undefined") {
+      return "light";
+    }
 
-    const toggleTheme = async () => {
-        setTheme(theme === "dark" ? "light" : "dark");
+    const storedTheme = localStorage.getItem("theme");
+    return storedTheme === "dark" ? "dark" : "light";
+  });
+
+  const toggleTheme = () => {
+    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
     }
 
     useEffect(() => {
