@@ -17,12 +17,14 @@ const articleSections = [
 ];
 
 export default function HomePage() {
+  const [featuredArticle, ...timelineArticles] = articleSections;
+
   return (
     <main className="lunar-home">
       <section className="hero-wrap">
         <h1 className="hero-title">Language Understanding and Representation Lab</h1>
         <p className="hero-subtitle">
-          description description description dddfsf description descriionxa
+          description description description description description description
         </p>
         <div className="hero-image-placeholder" aria-hidden="true" />
       </section>
@@ -36,15 +38,22 @@ export default function HomePage() {
           <span className="dot" />
         </div>
 
-        <article className="feature-card">
-          <h2>Understanding Neural Networks Under the Hood</h2>
-          <p>description description description description description description</p>
-          <div className="article-image-placeholder" aria-hidden="true" />
-        </article>
+        {featuredArticle ? <article className="featured-item">
+          <div className="timeline-rail" aria-hidden="true">
+            <span className="timeline-dot-primary" />
+            <span className="timeline-dot-accent" />
+            <span className="timeline-line" />
+          </div>
+          <div className="feature-card">
+            <h2>{featuredArticle.title}</h2>
+            <p>{featuredArticle.description}</p>
+            <div className="article-image-placeholder" aria-hidden="true" />
+          </div>
+        </article> : null}
       </section>
 
       <section className="timeline-wrap" aria-label="Recent articles">
-        {articleSections.map((article) => (
+        {timelineArticles.map((article) => (
           <article className="timeline-item" key={article.title}>
             <div className="timeline-rail" aria-hidden="true">
               <span className="timeline-dot-primary" />

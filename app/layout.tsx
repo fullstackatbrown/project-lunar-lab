@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Playfair_Display } from "next/font/google";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 
 import SiteHeader from "@/components/layout/SiteHeader";
@@ -13,7 +13,7 @@ const sans = Manrope({
   weight: ["400", "500", "600", "700"],
 });
 
-const display = Playfair_Display({
+const display = Cormorant_Garamond({
   variable: "--font-display",
   subsets: ["latin"],
   style: ["normal", "italic"],
