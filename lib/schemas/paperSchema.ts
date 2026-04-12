@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { TagIdSchema } from "./tagSchema";
 
 /**
  * Paper CMS Schema
@@ -21,7 +20,7 @@ export const PaperSchema = z.object({
   venue: z.string({ message: "Missing paper venue" }),
 
   tags: z.array(
-    z.string({ message: "Tags field must be an array of strings" }).regex(TagIdSchema),
+    z.string({ message: "Tags field must be an array of strings" }).regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Invalid tag id format"),
     { message: "Tags field must be an array" }
   ),
 

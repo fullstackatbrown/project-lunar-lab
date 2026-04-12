@@ -5,8 +5,7 @@ import "./globals.css";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
 
-import { ThemeProvider} from "@/context/themeContext";
-import ThemeProvider from "@/components/theme/ThemeProvider";
+import { ThemeProvider } from "@/context/themeContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,7 +38,7 @@ export default function RootLayout({
   `;
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
@@ -47,9 +46,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-        <SiteHeader />
-        {children}
-        <SiteFooter />
           <SiteHeader />
           {children}
           <SiteFooter />
