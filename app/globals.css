@@ -18,15 +18,10 @@
   --font-display: var(--font-display);
 }
 
+
 :root[data-theme="dark"] {
-  --background: #141215;
-  --foreground: #ece0cc;
-  --muted-foreground: #87838c;
-  --header-foreground: #ece0cc;
-  --surface-placeholder: #d2d2d4;
-  --line-color: #6d6b72;
-  --brand-core: #2c3650;
-  --brand-ring: #efdfbd;
+  --background: #0a0a0a;
+  --foreground: #F9E4C8;
 }
 
 * {

@@ -6,7 +6,9 @@ import { useTheme } from "../theme/ThemeProvider";
 const links = [
   { href: "/member", label: "People" },
   { href: "/publications", label: "Research" },
-  { href: "/blog", label: "Blog" },
+  { href: "/member", label: "Members" },
+  { href: "/blog", label: "News" },
+  { href: "/join", label: "Join the Lab" },
 ];
 
 export default function NavLinks() {
