@@ -13,6 +13,7 @@ export const TagSchema = z.object({
   label: z.string().min(1, "Tag label is required"),
   description: z.string().min(1, "Tag description is required"),
   color: TagColorSchema,
+  aliases: z.array(z.string()).optional().default([]),
 });
 
 export type Tag = z.infer<typeof TagSchema>;

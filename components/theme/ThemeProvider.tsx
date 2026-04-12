@@ -42,21 +42,25 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
  */
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
-    const [theme, setTheme] = useState<"light" | "dark">(() => {
-        const storedTheme = localStorage.getItem("theme");
-        return storedTheme === "dark" ? "dark" : "light";
-    });
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
-    const toggleTheme = async () => {
-        setTheme(theme === "dark" ? "light" : "dark");
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  }
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "dark") {
+      setTheme("dark");
     }
+  }, []);
 
-    useEffect(() => {
-        document.documentElement.setAttribute("data-theme", theme);
-        localStorage.setItem("theme", theme);
-    }, [theme]);
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
-    return (
+  return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>

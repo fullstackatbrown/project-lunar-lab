@@ -2,5 +2,6 @@
   "id": "llm",
   "label": "Large Language Models",
   "description": "Related to large language models and their applications.",
-  "color": "#8B5CF6"
+  "color": "#8B5CF6",
+  "aliases": ["ChatGPT", "GPT", "LLM"]
 }

@@ -1,6 +1,7 @@
 {
-  "id": "Unique identifier (e.g 'llm')",
+  "id": "example-tag-id",
   "label": "Human-readable name or title (e.g., 'Large Language Models')",
   "description": "Short explanation of the tag's meaning or scope (e.g., 'related to large language models and their applications.')",
-  "color": "Color code (e.g., '#8B5CF6')"
+  "color": "#8B5CF6",
+  "aliases": ["optional", "alias-strings"]
 }
