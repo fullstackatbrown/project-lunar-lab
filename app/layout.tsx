@@ -4,7 +4,7 @@ import "./globals.css";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
 
-import ThemeProvider from "@/components/theme/ThemeProvider";
+import { ThemeProvider } from "@/context/themeContext";
 
 export const metadata: Metadata = {
   title: "LUNAR Lab",
@@ -27,7 +27,7 @@ export default function RootLayout({
   `;
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/rsx0kcp.css" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
