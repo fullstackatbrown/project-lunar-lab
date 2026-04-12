@@ -1,0 +1,6 @@
+{
+  "id": "Unique identifier (e.g 'llm')",
+  "label": "Human-readable name or title (e.g., 'Large Language Models')",
+  "description": "Short explanation of the tag's meaning or scope (e.g., 'related to large language models and their applications.')",
+  "color": "Color code (e.g., '#8B5CF6')"
+}
