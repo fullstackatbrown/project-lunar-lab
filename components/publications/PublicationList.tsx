@@ -1,5 +1,13 @@
 "use client";
 
+
+/*
+Hard coded color values for:
+- search bar
+- journal of publication
+- 
+*/
+
 import { useState, useMemo, useRef, useEffect } from "react";
 import type { Paper } from "@/lib/schemas/paperSchema";
 import type { Tag } from "@/lib/schemas/tagSchema";
@@ -15,7 +23,7 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
 
-  // Close search dropdown when clicking outside
+  // close search dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
@@ -42,7 +50,7 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
     });
   }, [papers, searchQuery, selectedTag]);
 
-  // Suggestions for the search dropdown
+ // search suggestions dropdown
   const suggestions = useMemo(() => {
     if (searchQuery.length < 2) return [];
     return papers
@@ -59,7 +67,7 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
   return (
     <div className="space-y-12">
       <div className="flex flex-col gap-6 md:flex-row md:items-start">
-        {/* Search Bar Wrapper with fixed height to prevent layout shift */}
+        {/* search bar wrapper with fixed height to prevent layout shift */}
         <div className="relative z-20 w-full max-w-md h-[54px]" ref={searchRef}>
           <div 
             className={`rounded-xl bg-[#F5EAD7] p-1 transition-all duration-200 ${
@@ -92,7 +100,7 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
               </svg>
             </div>
 
-            {/* Dropdown suggestions */}
+            {/* dropdown suggestions */}
             {isSearchFocused && suggestions.length > 0 && (
               <div className="mt-1 border-t border-black/10 py-4">
                 {suggestions.map((paper) => (
@@ -116,13 +124,13 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
           </div>
         </div>
 
-        {/* Tag Filters */}
+        {/* tag filters */}
         <div className="flex flex-wrap gap-2 pt-1">
           {tags.map((tag) => (
             <button
               key={tag.id}
               onClick={() => handleTagClick(tag.id)}
-              className={`rounded-lg border px-5 py-2 text-sm transition-colors font-serif ${
+              className={`rounded-lg border px-6 py-4 text-sm transition-colors font-serif ${
                 selectedTag === tag.id
                   ? "border-[#2D3748] bg-[#2D3748] text-white"
                   : "border-[#CBD5E0] bg-white text-black/60 hover:bg-gray-50"
@@ -134,7 +142,7 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
         </div>
       </div>
 
-      {/* Publications List */}
+      {/* publications list */}
       <div className="space-y-0 border-t border-black/10">
         {filteredPapers.length === 0 ? (
           <p className="py-12 italic text-black/50">No publications found.</p>
@@ -144,13 +152,13 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
               key={paper.id}
               className="grid gap-8 border-b border-black/10 py-10 md:grid-cols-[140px_1fr_300px]"
             >
-              {/* Venue & Year */}
+              {/* venue & year */}
               <div className="text-sm uppercase tracking-wider text-black/60">
                 <div className="font-semibold text-black/80">{paper.venue}</div>
                 <div>{paper.year}</div>
               </div>
 
-              {/* Title */}
+              {/* title */}
               <div>
                 <h2 className="group italic text-2xl font-medium leading-tight">
                   <a
@@ -176,7 +184,7 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
                   </a>
                 </h2>
                 
-                {/* Secondary links (Code/Data) if any */}
+                {/* secondary links (code/data urls) --> conditional*/}
                 {(paper.codeUrl || paper.dataUrl) && (
                   <div className="mt-4 flex gap-4 text-sm">
                     {paper.codeUrl && (
@@ -203,7 +211,7 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
                 )}
               </div>
 
-              {/* Authors */}
+              {/* authors */}
               <div className="text-right text-sm text-black/80 md:pl-8">
                 {paper.authors.join(", ")}
               </div>
