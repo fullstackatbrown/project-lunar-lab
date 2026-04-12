@@ -1,30 +1,15 @@
-/*import NavLinks from "./NavLinks";
-
-export default function SiteHeader() {
-  return (
-    <header style={{ padding: 24, borderBottom: "1px solid #eee" }}>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <strong>LUNAR Lab</strong>
-        <NavLinks />
-      </div>
-    </header>
-  );
-}*/
+"use client";
 
 import NavLinks from "./NavLinks";
 import Logo from "@/components/logo";
+import Link from "next/link";
+import { useTheme } from "@/context/themeContext";
 
 export default function SiteHeader() {
+    const { theme, toggleTheme } = useTheme();
     return (
         <header
-            style={{
-                color: "#323C50",
-                padding: "50px 60px",
-                borderBottom: "1px solid #ddd",
-                backgroundColor: "#ffffff",
-                height: 150,
-                maxWidth: 1728,
-            }}
+            className={"header"}
         >
             <div
                 style={{
@@ -37,27 +22,19 @@ export default function SiteHeader() {
             >
                 {/* LEFT: Logo + Title */}
                 <div style={{ display: "flex", alignItems: "center", gap: 16,}}>
-                    <Logo size = {82}/>
+                    <Link href={"/"}>
+                        <Logo size = {82} /> </Link>
+                        <h3 style={{fontSize: "45"}} >
+                            <Link href={"/"}>Lunar Lab </Link>
+                        </h3>
 
-                    <h4
-                        style={{
-                            fontFamily: "FreightText Pro",
-                            fontStyle: "italic",
-                            transform: "skewX(5deg)",
-                            fontSize: 40,
-                            fontWeight: 400,
-
-                        }}
-                    >
-                        Lunar Lab
-                    </h4>
                 </div>
 
                 {/* RIGHT: Links + Moon */}
                 <div style={{ display: "flex", alignItems: "center", gap: 36 }}>
                     <NavLinks />
 
-                    {/* Moon button (visual only) */}
+                    {/* Moon button */}
                     <button
                         style={{
                             background: "none",
@@ -66,14 +43,17 @@ export default function SiteHeader() {
                             display: "flex",
                             alignItems: "center",
                         }}
+                        onClick = {toggleTheme}
                     >
-                        <svg width="26" height="26" fill="none" stroke="black">
-                            <path
-                                strokeWidth="2"
-                                d="M21 12.79A9 9 0 1111.21 3
-                   7 7 0 0021 12.79z"
-                            />
-                        </svg>
+                        {theme === "dark" ? (
+                            <svg width="26" height="26" fill="#F9E4C8" stroke="#F9E4C8" strokeWidth="2">
+                                <circle cx="12" cy="12" r="9" />
+                            </svg>
+                        ) : (
+                            <svg width="26" height="26" fill="none" stroke="#323C50" strokeWidth="2">
+                                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+                            </svg>
+                        )}
                     </button>
                 </div>
             </div>

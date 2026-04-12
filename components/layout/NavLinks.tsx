@@ -23,24 +23,15 @@ export default function NavLinks() {
 import Link from "next/link";
 
 const links = [
-  { href: "/people", label: "People" },
+  { href: "/member", label: "People" },
   { href: "/research", label: "Research" },
   { href: "/blog", label: "Blog" },
+  { href: "/join", label: "Join the Lab"}
 ];
 
 export default function NavLinks() {
   return (
-      <nav
-          style={{
-            display: "flex",
-            gap: 40,
-            alignItems: "center",
-            fontSize: 21,
-            fontFamily:"Be Vietnam Pro",
-            fontWeight: 400,
-            color: "#323C50",
-          }}
-      >
+      <p className="menu" >
         {links.map((link) => (
             <Link
                 key={link.href}
@@ -50,6 +41,6 @@ export default function NavLinks() {
               {link.label}
             </Link>
         ))}
-      </nav>
+      </p>
   );
 }

@@ -15,6 +15,7 @@ import { Be_Vietnam_Pro } from "next/font/google";
 import { FaYoutube, FaXTwitter } from "react-icons/fa6";
 import { BsSubstack } from "react-icons/bs";
 import Logo from "@/components/logo";
+import '@/app/globals.css';
 
 const beVietnam = Be_Vietnam_Pro({
     subsets: ["latin"],
@@ -24,20 +25,7 @@ const beVietnam = Be_Vietnam_Pro({
 export default function SiteFooter() {
     return (
         <footer
-
-                style={{
-                padding: "60px 80px",
-                borderTop: "1px solid #ddd",
-                marginTop: 80,
-                color: "#323C50",
-                height: 301,
-
-                backgroundImage: "url('/astronaut2.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-            }}
-
+            className={"footer"}
         >
             <div
                 className={beVietnam.className}
@@ -52,31 +40,13 @@ export default function SiteFooter() {
                 {/* LEFT: Contact */}
                 <div>
 
-                    <h3
-                        style={{
-                            fontFamily: "FreightText Pro",
-                            fontStyle: "italic",
-                            fontSize: 30,
-                            fontWeight: 400,
-                            marginBottom: 30,
-                            marginTop: 20
-                        }}
-                    >
-                        Contact us
-                    </h3>
+                    <h3 style={{fontSize: "40"}}> Contact us </h3>
 
-                    <p style={{
-                        fontFamily: "Be Vietnam Pro",
-                        fontWeight: 400,
-                        fontSize: 19
-                    }}>
+                    <p>
                         lunarlab@gmail.com
                     </p>
-                    <p style={{
-                        fontFamily: "Be Vietnam Pro",
-                        fontWeight: 400,
-                        fontSize: 19
-                    }}>
+
+                    <p>
                         000-000-0000
                     </p>
                 </div>
