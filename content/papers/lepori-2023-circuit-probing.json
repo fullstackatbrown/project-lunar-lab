@@ -1,0 +1,13 @@
+{
+  "id": "lepori-2023-circuit-probing",
+  "title": "Uncovering Intermediate Variables in Transformers Using Circuit Probing",
+  "authors": [
+    "Michael A. Lepori",
+    "Thomas Serre",
+    "Ellie Pavlick"
+  ],
+  "year": 2023,
+  "venue": "Preprint",
+  "tags": [],
+  "paperUrl": "https://arxiv.org/pdf/2311.04354.pdf"
+}

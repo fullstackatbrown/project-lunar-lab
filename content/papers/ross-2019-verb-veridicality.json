@@ -1,0 +1,12 @@
+{
+  "id": "ross-2019-verb-veridicality",
+  "title": "How well do NLI models capture verb veridicality?",
+  "authors": [
+    "Alexis Ross",
+    "Ellie Pavlick"
+  ],
+  "year": 2019,
+  "venue": "EMNLP",
+  "tags": [],
+  "paperUrl": "https://www.aclweb.org/anthology/D19-1228.pdf"
+}

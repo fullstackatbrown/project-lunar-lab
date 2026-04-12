@@ -15,6 +15,8 @@ function getPaperFileNames(): string[] {
 
   return fs
     .readdirSync(papersDirectory)
+    .filter((fileName) => fileName.endsWith(".json"))
+    .filter((fileName) => !fileName.startsWith("_"));
     .filter((fileName) => fileName.endsWith(".json") && !fileName.includes("template"));
 }
 
@@ -52,29 +54,25 @@ function readPaperFile(fileName: string): Paper | null {
  * - Parses them
  * - Validates them
  * - Skips invalid files instead of crashing the whole page
- * - Warns on duplicate IDs
+ * - Warns and skips duplicate IDs
  * - Sorts papers (newest first)
  */
 export function getAllPapers(): Paper[] {
   const fileNames = getPaperFileNames();
-
   const papers: Paper[] = [];
+  const seenIds = new Set<string>();
 
   for (const fileName of fileNames) {
     const paper = readPaperFile(fileName);
 
     if (paper) {
+      if (seenIds.has(paper.id)) {
+        console.warn(`Duplicate paper ID found: ${paper.id} in ${fileName}`);
+        continue;
+      }
+      seenIds.add(paper.id);
       papers.push(paper);
     }
-  }
-
-  const seenIds = new Set<string>();
-
-  for (const paper of papers) {
-    if (seenIds.has(paper.id)) {
-      console.warn(`Duplicate paper id found: ${paper.id}`);
-    }
-    seenIds.add(paper.id);
   }
 
   return papers.sort((a, b) => b.year - a.year);

@@ -1,0 +1,13 @@
+{
+  "id": "merullo-2023-relational-tasks",
+  "title": "A Mechanism for Solving Relational Tasks in Transformer Language Models",
+  "authors": [
+    "Jack Merullo",
+    "Carsten Eickhoff",
+    "Ellie Pavlick"
+  ],
+  "year": 2023,
+  "venue": "Preprint",
+  "tags": [],
+  "paperUrl": "https://arxiv.org/abs/2305.16130"
+}

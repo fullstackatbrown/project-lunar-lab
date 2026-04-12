@@ -30,15 +30,18 @@ export function getAllTags(): Tag[] {
     const result = TagSchema.safeParse(parsedJson);
 
     if (!result.success) {
-      throw new Error(
-        `Invalid tag schema in file ${file}: ${result.error.message}`
+      console.error(
+        `Invalid tag schema in file ${file}:`,
+        result.error.format()
       );
+      continue;
     }
 
     const tag = result.data;
 
     if (seenIds.has(tag.id)) {
-      throw new Error(`Duplicate tag ID "${tag.id}" found in file: ${file}`);
+      console.warn(`Duplicate tag ID "${tag.id}" found in file: ${file}`);
+      continue;
     }
 
     seenIds.add(tag.id);

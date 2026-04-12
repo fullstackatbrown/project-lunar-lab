@@ -1,11 +1,10 @@
 import { getAllPapers } from "@/lib/data/papers";
-
-function formatTag(tag: string) {
-  return tag.replace(/-/g, " ");
-}
+import { getAllTags } from "@/lib/data/tags";
+import PublicationList from "@/components/publications/PublicationList";
 
 export default function PublicationsPage() {
   const papers = getAllPapers();
+  const tags = getAllTags();
 
   return (
     <main className="min-h-screen px-4 py-16">
