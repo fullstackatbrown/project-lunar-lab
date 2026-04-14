@@ -1,0 +1,14 @@
+{
+  "id": "lovering-2021-inductive-biases",
+  "title": "Predicting Inductive Biases of Pretrained Language Models",
+  "authors": [
+    "Charles Lovering",
+    "Rohan Jha",
+    "Tal Linzen",
+    "Ellie Pavlick"
+  ],
+  "year": 2021,
+  "venue": "ICLR",
+  "tags": [],
+  "paperUrl": "https://openreview.net/forum?id=mNtmhaDkAr"
+}

@@ -15,8 +15,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 body {
@@ -29,6 +27,13 @@ body {
   font-family: inherit;
 }
 
+.menu{
+  display: flex;
+  gap: 40px;
+  font-size: 21px;
+  font-family: Be Vietnam Pro;
+  font-weight: 400;
+}
 
 .page {
   padding: 60px 40px 60px 90px;

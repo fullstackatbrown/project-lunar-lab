@@ -1,0 +1,16 @@
+{
+  "id": "nguyen-2020-robot-retrieval",
+  "title": "Robot Object Retrieval with Contextual Natural Language Queries",
+  "authors": [
+    "Thao Nguyen",
+    "Nakul Gopalan",
+    "Roma Patel",
+    "Matt Corsaro",
+    "Ellie Pavlick",
+    "Stefanie Tellex"
+  ],
+  "year": 2020,
+  "venue": "ICRA",
+  "tags": [],
+  "paperUrl": "http://www.roboticsproceedings.org/rss16/p080.pdf"
+}

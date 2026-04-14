@@ -1,33 +1,32 @@
 import { getAllPapers } from "@/lib/data/papers";
-
-function formatTag(tag: string) {
-  return tag.replace(/-/g, " ");
-}
+import { getAllTags } from "@/lib/data/tags";
+import PublicationList from "@/components/publications/PublicationList";
 
 export default function PublicationsPage() {
   const papers = getAllPapers();
+  const tags = getAllTags();
 
   return (
     <main className="min-h-screen px-4 py-16">
       <div className="mx-auto max-w-6xl">
-        <header className="mb-10 border-b border-black/10 pb-4">
+        <header className="mb-10 border-b border-foreground/10 pb-4">
           <h1 className="text-4xl font-semibold tracking-tight">Publications</h1>
-          <p className="mt-2 text-sm text-black/60">
+          <p className="mt-2 text-sm text-foreground/60">
             Papers are loaded from the Git-backed CMS content folder.
           </p>
         </header>
 
         {papers.length === 0 ? (
-          <p className="italic text-black/50">No publications found.</p>
+          <p className="italic text-foreground/50">No publications found.</p>
         ) : (
           <div className="space-y-6">
             {papers.map((paper) => (
               <article
                 key={paper.id}
-                className="grid gap-4 border-b border-black/10 pb-6 md:grid-cols-[140px_minmax(0,1fr)]"
+                className="grid gap-4 border-b border-foreground/10 pb-6 md:grid-cols-[140px_minmax(0,1fr)]"
               >
-                <div className="text-sm text-black/60">
-                  <div className="font-medium text-black">{paper.venue}</div>
+                <div className="text-sm text-foreground/60">
+                  <div className="font-medium text-foreground">{paper.venue}</div>
                   <div>{paper.year}</div>
                 </div>
 
@@ -43,7 +42,7 @@ export default function PublicationsPage() {
                     </a>
                   </h2>
 
-                  <p className="mt-2 text-sm text-black/80">
+                  <p className="mt-2 text-sm text-foreground/80">
                     {paper.authors.join(", ")}
                   </p>
 
@@ -51,7 +50,7 @@ export default function PublicationsPage() {
                     {paper.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full bg-black/5 px-3 py-1 text-xs uppercase tracking-wide text-black/70"
+                        className="rounded-full bg-foreground/5 px-3 py-1 text-xs uppercase tracking-wide text-foreground/70"
                       >
                         {formatTag(tag)}
                       </span>
