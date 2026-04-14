@@ -1,21 +1,7 @@
-/*export default function SiteFooter() {
-    return (
-      <footer style={{ padding: 24, borderTop: "1px solid #eee" }}>
-        <p>© {new Date().getFullYear()} LUNAR Lab</p>
-        <div style={{ marginTop: 8 }}>
-          <a href="#" target="_blank">YouTube</a> |{" "}
-          <a href="#" target="_blank">X</a>
-        </div>
-      </footer>
-    );
-  }
-  */
-
 import { Be_Vietnam_Pro } from "next/font/google";
 import { FaYoutube, FaXTwitter } from "react-icons/fa6";
 import { BsSubstack } from "react-icons/bs";
 import Logo from "@/components/logo";
-import '@/app/globals.css';
 
 const beVietnam = Be_Vietnam_Pro({
     subsets: ["latin"],
@@ -24,9 +10,7 @@ const beVietnam = Be_Vietnam_Pro({
 
 export default function SiteFooter() {
     return (
-        <footer
-            className={"footer"}
-        >
+        <footer className={"footer"}>
             <div
                 className={beVietnam.className}
                 style={{
@@ -39,18 +23,10 @@ export default function SiteFooter() {
             >
                 {/* LEFT: Contact */}
                 <div>
-
-                    <h3 style={{fontSize: "40"}}> Contact us </h3>
-
-                    <p>
-                        lunarlab@gmail.com
-                    </p>
-
-                    <p>
-                        000-000-0000
-                    </p>
+                    <h3 style={{ fontSize: "40" }}> Contact us </h3>
+                    <p>lunarlab@gmail.com</p>
+                    <p>000-000-0000</p>
                 </div>
-
 
                 <div
                     style={{
@@ -62,9 +38,9 @@ export default function SiteFooter() {
                         flexDirection: "row",
                     }}
                 >
-                    <Logo size = {50}/>
+                    <Logo size={50} />
                     <p
-                        style = {{
+                        style={{
                             fontFamily: "FreightText Pro",
                             fontStyle: "italic",
                             transform: "skewX(5deg)",
@@ -78,33 +54,17 @@ export default function SiteFooter() {
                     </p>
                 </div>
 
-
                 {/* RIGHT: Icons */}
                 <div style={{ display: "flex", gap: 28, alignItems: "center" }}>
-
-                    <a
-                        href="https://youtube.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
                         <FaYoutube size={26} />
                     </a>
-
-                    <a
-                        href="https://x.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <FaXTwitter size={26}/>
+                    <a href="https://x.com" target="_blank" rel="noopener noreferrer">
+                        <FaXTwitter size={26} />
                     </a>
-                    <a
-                        href = "https://substack.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                    <BsSubstack size = {26}/>
+                    <a href="https://substack.com" target="_blank" rel="noopener noreferrer">
+                        <BsSubstack size={26} />
                     </a>
-
                 </div>
             </div>
         </footer>

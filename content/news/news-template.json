@@ -1,0 +1,7 @@
+{
+  "id": "YYYY-MM-short-slug",
+  "date": "YYYY-MM-DD",
+  "title": "News item title",
+  "description": "One or two sentence summary of the news item.",
+  "url": "https://optional-external-link.com"
+}

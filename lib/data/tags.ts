@@ -10,7 +10,7 @@ export function getAllTags(): Tag[] {
   const tagFiles = fs
     .readdirSync(TAGS_DIRECTORY)
     .filter((file) => file.endsWith(".json"))
-    .filter((file) => !file.startsWith("_"));
+    .filter((file) => !file.startsWith("_") && file !== "tag-template.json");
 
   const seenIds = new Set<string>();
   const tagsList: Tag[] = [];
