@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import type { NewsItem } from "@/lib/schemas/newsSchema";
 
 function formatDate(dateStr: string) {
@@ -23,50 +24,32 @@ function SearchIcon() {
 function FeaturedCard({ item }: { item: NewsItem }) {
   const { month, year } = formatDate(item.date);
   return (
-    <div
-      style={{
-        width: "100%",
-        border: "1px solid var(--foreground)",
-        display: "grid",
-        gridTemplateColumns: "477px 1fr auto",
-        alignItems: "start",
-        minHeight: 366,
-        marginTop: 32,
-      }}
-    >
-      {/* Image */}
+    <Link href={`/blog/${item.id}`} style={{ textDecoration: "none", color: "inherit" }}>
       <div
         style={{
-          width: 477,
-          height: 366,
-          background: "#D9D9D9",
-          flexShrink: 0,
+          width: "100%",
+          border: "1px solid var(--foreground)",
+          display: "grid",
+          gridTemplateColumns: "477px 1fr auto",
+          alignItems: "start",
+          minHeight: 366,
+          marginTop: 32,
+          cursor: "pointer",
         }}
-      />
-
-      {/* Title */}
-      <div style={{ padding: "34px 32px" }}>
-        {item.url ? (
-          <a
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ textDecoration: "none", color: "var(--foreground)" }}
-          >
-            <div
-              style={{
-                fontFamily: "'FreightText Pro', serif",
-                fontStyle: "italic",
-                fontWeight: 400,
-                fontSize: 50,
-                lineHeight: "49px",
-                color: "var(--foreground)",
-              }}
-            >
-              {item.title}
-            </div>
-          </a>
+      >
+        {/* Image or placeholder */}
+        {item.image ? (
+          <img
+            src={item.image}
+            alt={item.title}
+            style={{ width: 477, height: 366, objectFit: "cover", display: "block" }}
+          />
         ) : (
+          <div style={{ width: 477, height: 366, background: "#D9D9D9", flexShrink: 0 }} />
+        )}
+
+        {/* Title only */}
+        <div style={{ padding: "34px 32px" }}>
           <div
             style={{
               fontFamily: "'FreightText Pro', serif",
@@ -79,79 +62,56 @@ function FeaturedCard({ item }: { item: NewsItem }) {
           >
             {item.title}
           </div>
-        )}
-        {item.description && (
-          <div
-            style={{
-              fontFamily: "'Be Vietnam Pro', sans-serif",
-              fontWeight: 400,
-              fontSize: 19,
-              lineHeight: "28px",
-              color: "var(--foreground)",
-              marginTop: 24,
-            }}
-          >
-            {item.description}
-          </div>
-        )}
-      </div>
+        </div>
 
-      {/* Date */}
-      <div
-        style={{
-          fontFamily: "'Be Vietnam Pro', sans-serif",
-          fontWeight: 400,
-          fontSize: 14,
-          lineHeight: "18px",
-          color: "var(--foreground)",
-          padding: "34px 32px",
-          whiteSpace: "nowrap",
-        }}
-      >
-        {month}
-        <br />
-        {year}
+        {/* Date */}
+        <div
+          style={{
+            fontFamily: "'Be Vietnam Pro', sans-serif",
+            fontWeight: 400,
+            fontSize: 14,
+            lineHeight: "18px",
+            color: "var(--foreground)",
+            padding: "34px 32px",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {month}
+          <br />
+          {year}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
 function GridCard({ item }: { item: NewsItem }) {
   const { month, year } = formatDate(item.date);
   return (
-    <div
-      style={{
-        border: "1px solid var(--foreground)",
-        padding: "32px",
-        minHeight: 280,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-      }}
-    >
-      {/* Title */}
-      {item.url ? (
-        <a
-          href={item.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ textDecoration: "none", color: "var(--foreground)" }}
-        >
-          <div
-            style={{
-              fontFamily: "'FreightText Pro', serif",
-              fontStyle: "italic",
-              fontWeight: 400,
-              fontSize: 50,
-              lineHeight: "41px",
-              color: "var(--foreground)",
-              marginBottom: 32,
-            }}
-          >
-            {item.title}
-          </div>
-        </a>
-      ) : (
+    <Link href={`/blog/${item.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+      <div
+        style={{
+          border: "1px solid var(--foreground)",
+          padding: "32px",
+          minHeight: 220,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          cursor: "pointer",
+        }}
+      >
+        {/* Image or placeholder */}
+        {item.image ? (
+          <img
+            src={item.image}
+            alt={item.title}
+            style={{ width: "100%", height: 160, objectFit: "cover", display: "block", marginBottom: 24 }}
+          />
+        ) : (
+          <div style={{ width: "100%", height: 160, background: "#D9D9D9", marginBottom: 24 }} />
+        )}
+
+        {/* Title */}
         <div
           style={{
             fontFamily: "'FreightText Pro', serif",
@@ -160,34 +120,13 @@ function GridCard({ item }: { item: NewsItem }) {
             fontSize: 50,
             lineHeight: "41px",
             color: "var(--foreground)",
-            marginBottom: 32,
+            marginBottom: 24,
           }}
         >
           {item.title}
         </div>
-      )}
 
-      {/* Description + Date row */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "flex-end",
-          gap: 16,
-        }}
-      >
-        <div
-          style={{
-            fontFamily: "'Be Vietnam Pro', sans-serif",
-            fontWeight: 400,
-            fontSize: 19,
-            lineHeight: "28px",
-            color: "var(--foreground)",
-            maxWidth: 541,
-          }}
-        >
-          {item.description}
-        </div>
+        {/* Date */}
         <div
           style={{
             fontFamily: "'Be Vietnam Pro', sans-serif",
@@ -195,26 +134,20 @@ function GridCard({ item }: { item: NewsItem }) {
             fontSize: 14,
             lineHeight: "18px",
             color: "var(--foreground)",
-            whiteSpace: "nowrap",
-            flexShrink: 0,
           }}
         >
-          {month}
-          <br />
-          {year}
+          {month} {year}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
 export default function BlogList({ items }: { items: NewsItem[] }) {
   const [query, setQuery] = useState("");
 
-  const filtered = items.filter(
-    (item) =>
-      item.title.toLowerCase().includes(query.toLowerCase()) ||
-      item.description.toLowerCase().includes(query.toLowerCase())
+  const filtered = items.filter((item) =>
+    item.title.toLowerCase().includes(query.toLowerCase())
   );
 
   const featured = filtered[0] ?? null;
@@ -223,14 +156,7 @@ export default function BlogList({ items }: { items: NewsItem[] }) {
   return (
     <>
       {/* Search bar */}
-      <div
-        style={{
-          position: "relative",
-          width: 409,
-          height: 47,
-          marginBottom: 40,
-        }}
-      >
+      <div style={{ position: "relative", width: 409, height: 47, marginBottom: 40 }}>
         <div
           style={{
             width: 409,
@@ -259,13 +185,7 @@ export default function BlogList({ items }: { items: NewsItem[] }) {
               color: "#323C50",
             }}
           />
-          <div
-            style={{
-              position: "absolute",
-              left: 372,
-              top: 12,
-            }}
-          >
+          <div style={{ position: "absolute", left: 372, top: 12 }}>
             <SearchIcon />
           </div>
         </div>

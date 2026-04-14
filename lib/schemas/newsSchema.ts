@@ -14,6 +14,9 @@ export const NewsSchema = z.object({
 
   // Optional external link (paper, press release, announcement)
   url: z.string().url("url must be a valid URL").optional(),
+
+  // Optional image — relative path (e.g. "/images/news/my-photo.jpg") or absolute URL
+  image: z.string().optional(),
 });
 
 export type NewsItem = z.infer<typeof NewsSchema>;

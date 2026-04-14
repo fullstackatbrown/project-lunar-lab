@@ -1,0 +1,126 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+
+const SLIDES = [
+  { color: "#D9D9D9" },
+  { color: "#323C50" },
+  { color: "#F9E4C8" },
+  { color: "#8B9BB4" },
+  { color: "#C4B5A0" },
+];
+
+const INTERVAL_MS = 3000;
+
+// Lunar phase dots — the middle dot highlights the active slide
+function LunarDots({ active }: { active: number }) {
+  // Each dot corresponds to one slide
+  const dots = [
+    // moon1 left
+    (isActive: boolean) => (
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+        <circle cx="7.5" cy="7.5" r="7.5" fill={isActive ? "#F9E4C8" : "#323C50"} />
+        <path
+          d="M5.19043 0.363281C3.26147 1.72041 2 3.96226 2 6.5C2 10.6421 5.35786 14 9.5 14C10.3057 14 11.0811 13.8709 11.8086 13.6357C10.5891 14.4937 9.10431 15 7.5 15C3.35786 15 0 11.6421 0 7.5C0 4.16383 2.17855 1.33727 5.19043 0.363281Z"
+          fill={isActive ? "#323C50" : "#F9E4C8"}
+        />
+      </svg>
+    ),
+    // moon2
+    (isActive: boolean) => (
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+        <circle cx="7.5" cy="7.5" r="7.5" fill={isActive ? "#F9E4C8" : "#323C50"} />
+        <path
+          d="M7.5 0C7.78731 0 8.07071 0.0173766 8.34961 0.0488281C6.90302 1.41608 6 3.35242 6 5.5C6 9.35446 8.90788 12.5277 12.6494 12.9502C11.3059 14.22 9.49454 15 7.5 15C3.35786 15 0 11.6421 0 7.5C0 3.35786 3.35786 0 7.5 0Z"
+          fill={isActive ? "#323C50" : "#F9E4C8"}
+        />
+      </svg>
+    ),
+    // full circle
+    (isActive: boolean) => (
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+        <circle cx="7.5" cy="7.5" r="7.5" fill={isActive ? "#F9E4C8" : "#323C50"} />
+      </svg>
+    ),
+    // moon2 mirrored
+    (isActive: boolean) => (
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+        <circle cx="7.5" cy="7.5" r="7.5" transform="matrix(-1 0 0 1 15 0)" fill={isActive ? "#F9E4C8" : "#323C50"} />
+        <path
+          d="M7.5 0C7.21269 0 6.92929 0.0173766 6.65039 0.0488281C8.09698 1.41608 9 3.35242 9 5.5C9 9.35446 6.09212 12.5277 2.35059 12.9502C3.6941 14.22 5.50546 15 7.5 15C11.6421 15 15 11.6421 15 7.5C15 3.35786 11.6421 0 7.5 0Z"
+          fill={isActive ? "#323C50" : "#F9E4C8"}
+        />
+      </svg>
+    ),
+    // moon1 mirrored
+    (isActive: boolean) => (
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+        <circle cx="7.5" cy="7.5" r="7.5" transform="matrix(-1 0 0 1 15 0)" fill={isActive ? "#F9E4C8" : "#323C50"} />
+        <path
+          d="M9.80957 0.363281C11.7385 1.72041 13 3.96226 13 6.5C13 10.6421 9.64214 14 5.5 14C4.69426 14 3.91885 13.8709 3.19141 13.6357C4.41088 14.4937 5.89569 15 7.5 15C11.6421 15 15 11.6421 15 7.5C15 4.16383 12.8215 1.33727 9.80957 0.363281Z"
+          fill={isActive ? "#323C50" : "#F9E4C8"}
+        />
+      </svg>
+    ),
+  ];
+
+  return (
+    <div style={{ position: "relative", width: 155.63, height: 15, display: "flex", alignItems: "center", gap: 16 }}>
+      {dots.map((Dot, i) => (
+        <div key={i} style={{ cursor: "pointer" }}>
+          {Dot(active === i)}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default function HeroCarousel() {
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    if (paused) {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      return;
+    }
+
+    intervalRef.current = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % SLIDES.length);
+    }, INTERVAL_MS);
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [paused]);
+
+  return (
+    <div
+      style={{
+        width: "100%",
+        maxWidth: 1243,
+        height: 492,
+        marginTop: 48,
+        position: "relative",
+        overflow: "hidden",
+        transition: "background-color 0.6s ease",
+        background: SLIDES[current].color,
+      }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Lunar phase dots — centered at bottom, active dot inverts */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 26,
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
+      >
+        <LunarDots active={current} />
+      </div>
+    </div>
+  );
+}

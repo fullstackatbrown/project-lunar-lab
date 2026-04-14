@@ -8,7 +8,7 @@ export default function PublicationsPage() {
 
   return (
     <main className="min-h-screen" style={{ paddingLeft: 87, paddingRight: 87, paddingTop: 0 }}>
-      <h2 style={{ marginBottom: 26 }}>Papers</h2>
+      <h2 style={{ marginBottom: 30 }}>Papers</h2>
       <PublicationList papers={papers} tags={tags} />
     </main>
   );

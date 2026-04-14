@@ -144,7 +144,7 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
                   onMouseEnter={(e) => (e.currentTarget.style.background = "#F9E4C8")}
                   onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                 >
-                  {paper.title.length > 60 ? paper.title.substring(0, 60) + "…" : paper.title}
+                  {paper.title}
                 </button>
               ))}
             </div>
@@ -160,10 +160,9 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
                 key={tag.id}
                 onClick={() => setSelectedTag(active ? null : tag.id)}
                 style={{
-                  width: 111,
                   height: 47,
-                  paddingLeft: 13,
-                  paddingRight: 13,
+                  paddingLeft: 18,
+                  paddingRight: 18,
                   paddingTop: 10,
                   paddingBottom: 10,
                   borderRadius: 16,
@@ -175,7 +174,7 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
                   alignItems: "center",
                   cursor: "pointer",
                   border: "none",
-                  overflow: "hidden",
+                  whiteSpace: "nowrap",
                 }}
               >
                 <span
@@ -185,9 +184,6 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
                     fontSize: 19,
                     lineHeight: "24px",
                     color: active ? "var(--background)" : "var(--foreground)",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
                   }}
                 >
                   {tag.label}
@@ -225,7 +221,7 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
             }}
           >
             {/* Venue & year */}
-            <div style={{ paddingTop: 9, paddingLeft: 9 }}>
+            <div style={{ paddingTop: 9, paddingLeft: 9, paddingRight: 12 }}>
               <div
                 style={{
                   fontFamily: "'Be Vietnam Pro', sans-serif",
@@ -233,10 +229,13 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
                   fontSize: 14,
                   lineHeight: "18px",
                   color: "var(--foreground)",
-                  whiteSpace: "pre",
+                  wordBreak: "break-word",
+                  overflowWrap: "break-word",
                 }}
               >
-                {paper.venue.toUpperCase()}{"   "}{paper.year}
+                {paper.venue.toUpperCase()}
+                <br />
+                {paper.year}
               </div>
             </div>
 
@@ -260,7 +259,7 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
                     fontFamily: "'FreightText Pro', serif",
                     fontStyle: "italic",
                     fontWeight: 400,
-                    fontSize: 30,
+                    fontSize: 25,
                     lineHeight: "28px",
                     maxWidth: 352,
                   }}

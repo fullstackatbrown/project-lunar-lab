@@ -1,5 +1,6 @@
 import { getLatestNews } from "@/lib/data/news";
 import type { NewsItem } from "@/lib/schemas/newsSchema";
+import HeroCarousel from "@/components/home/HeroCarousel";
 
 // Format ISO date string → { month: "JANUARY", year: "2025" }
 function formatDate(dateStr: string) {
@@ -10,47 +11,6 @@ function formatDate(dateStr: string) {
   };
 }
 
-// Lunar phase dots — exact SVG paths from Figma, always use brand colors
-function LunarDots() {
-  return (
-    <div style={{ position: "relative", width: 155.63, height: 15 }}>
-      {/* moon1 left */}
-      <div style={{ position: "absolute", left: 0, top: 0 }}>
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-          <circle cx="7.5" cy="7.5" r="7.5" fill="#323C50" />
-          <path d="M5.19043 0.363281C3.26147 1.72041 2 3.96226 2 6.5C2 10.6421 5.35786 14 9.5 14C10.3057 14 11.0811 13.8709 11.8086 13.6357C10.5891 14.4937 9.10431 15 7.5 15C3.35786 15 0 11.6421 0 7.5C0 4.16383 2.17855 1.33727 5.19043 0.363281Z" fill="#F9E4C8" />
-        </svg>
-      </div>
-      {/* moon2 */}
-      <div style={{ position: "absolute", left: 31, top: 0 }}>
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-          <circle cx="7.5" cy="7.5" r="7.5" fill="#323C50" />
-          <path d="M7.5 0C7.78731 0 8.07071 0.0173766 8.34961 0.0488281C6.90302 1.41608 6 3.35242 6 5.5C6 9.35446 8.90788 12.5277 12.6494 12.9502C11.3059 14.22 9.49454 15 7.5 15C3.35786 15 0 11.6421 0 7.5C0 3.35786 3.35786 0 7.5 0Z" fill="#F9E4C8" />
-        </svg>
-      </div>
-      {/* full circle */}
-      <div style={{ position: "absolute", left: 62, top: 0 }}>
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-          <circle cx="7.5" cy="7.5" r="7.5" fill="#F9E4C8" />
-        </svg>
-      </div>
-      {/* moon2 mirrored */}
-      <div style={{ position: "absolute", left: 93, top: 0 }}>
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-          <circle cx="7.5" cy="7.5" r="7.5" transform="matrix(-1 0 0 1 15 0)" fill="#323C50" />
-          <path d="M7.5 0C7.21269 0 6.92929 0.0173766 6.65039 0.0488281C8.09698 1.41608 9 3.35242 9 5.5C9 9.35446 6.09212 12.5277 2.35059 12.9502C3.6941 14.22 5.50546 15 7.5 15C11.6421 15 15 11.6421 15 7.5C15 3.35786 11.6421 0 7.5 0Z" fill="#F9E4C8" />
-        </svg>
-      </div>
-      {/* moon1 mirrored */}
-      <div style={{ position: "absolute", left: 124, top: 0 }}>
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-          <circle cx="7.5" cy="7.5" r="7.5" transform="matrix(-1 0 0 1 15 0)" fill="#323C50" />
-          <path d="M9.80957 0.363281C11.7385 1.72041 13 3.96226 13 6.5C13 10.6421 9.64214 14 5.5 14C4.69426 14 3.91885 13.8709 3.19141 13.6357C4.41088 14.4937 5.89569 15 7.5 15C11.6421 15 15 11.6421 15 7.5C15 4.16383 12.8215 1.33727 9.80957 0.363281Z" fill="#F9E4C8" />
-        </svg>
-      </div>
-    </div>
-  );
-}
 
 // Chevron-right arrow — exact path from Figma, color via CSS variable
 function ChevronRight({ color }: { color: string }) {
@@ -187,29 +147,7 @@ export default async function HomePage() {
         Language Understanding and<br />Representation Lab
       </h1>
 
-      {/* Hero image carousel placeholder */}
-      <div
-        style={{
-          width: "100%",
-          maxWidth: 1243,
-          height: 492,
-          background: "#D9D9D9",
-          marginTop: 48,
-          position: "relative",
-        }}
-      >
-        {/* Lunar phase dots — centered at bottom of image */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 26,
-            left: "50%",
-            transform: "translateX(-50%)",
-          }}
-        >
-          <LunarDots />
-        </div>
-      </div>
+      <HeroCarousel />
 
       {/* Description paragraph */}
       <p

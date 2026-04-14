@@ -73,3 +73,10 @@ export function getAllNews(): NewsItem[] {
 export function getLatestNews(limit = 3): NewsItem[] {
   return getAllNews().slice(0, limit);
 }
+
+/**
+ * Returns one news item by ID, or null if not found.
+ */
+export function getNewsById(id: string): NewsItem | null {
+  return getAllNews().find((item) => item.id === id) ?? null;
+}
