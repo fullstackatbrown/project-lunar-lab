@@ -1,0 +1,8 @@
+{
+  "id": "2025-03-icml-paper-accepted",
+  "date": "2025-03-22",
+  "title": "Paper accepted at ICML 2025",
+  "description": "We are thrilled to announce that our paper, \"Compositional Generalization in Neural Language Models: A Systematic Evaluation,\" has been accepted at the International Conference on Machine Learning (ICML) 2025.\n\nThis work presents a comprehensive benchmark for evaluating compositional generalization — the ability of a model to understand and produce novel combinations of familiar concepts. Our results reveal a striking gap between the performance of large language models on standard benchmarks and their behavior on carefully controlled compositional tests, suggesting that many models rely on surface-level pattern matching rather than genuine structural understanding.\n\nWe introduce a suite of 12 diagnostic tasks spanning syntax, semantics, and pragmatics, and evaluate over 20 models ranging from compact transformers to state-of-the-art instruction-tuned systems. Key findings include that chain-of-thought prompting substantially improves compositional performance on semantic tasks but has little effect on syntactic ones, and that models trained on linguistically diverse corpora generalize more robustly across task types.\n\nThe paper will be presented in Vienna this July. Code, data, and a live demo will be released on our GitHub page ahead of the conference.",
+  "url": "https://icml.cc",
+  "image": "/images/news/icml-2025.jpg"
+}

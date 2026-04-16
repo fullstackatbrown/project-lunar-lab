@@ -1,0 +1,7 @@
+{
+  "id": "2024-09-dnn-psych-preprint",
+  "date": "2024-09-10",
+  "title": "New preprint: How Can Deep Neural Networks Inform Theory in Psychological Science?",
+  "description": "We have posted a new preprint to PsyArXiv: \"How Can Deep Neural Networks Inform Theory in Psychological Science?\" authored by Sam Whitman McGrath, Jacob Russin, Ellie Pavlick, and Roman Feiman.\n\nThis paper examines the methodological and theoretical challenges involved in using deep neural networks as scientific models of human cognition. We argue that, while DNNs have proven remarkably useful as engineering tools, their role as theoretical models in psychology requires greater care and specificity than is currently common in the literature.\n\nThe paper makes three main contributions. First, we distinguish between different modes in which DNNs can be used in psychological research — as existence proofs, as process models, and as benchmarks — and argue that conflating these roles leads to interpretive errors. Second, we introduce a set of criteria for evaluating the theoretical utility of a DNN model in a given domain, drawing on philosophy of science and cognitive modeling traditions. Third, we apply these criteria to a series of case studies spanning language, vision, and reasoning, illustrating both the promise and the pitfalls of current approaches.\n\nThe preprint is available now on PsyArXiv and has been submitted for peer review. We welcome comments and discussion from the community.",
+  "url": "https://osf.io/preprints/psyarxiv/j5ckf"
+}
