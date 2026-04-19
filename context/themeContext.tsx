@@ -12,12 +12,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [theme, setTheme] = useState<Theme>("light");
 
     useEffect(() => {
-        // Respect system preference on first load
         const saved = localStorage.getItem("theme") as Theme;
-        const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light";
-        const initial = saved || preferred;
+        const initial = saved || "light";
         setTheme(initial);
         document.documentElement.setAttribute("data-theme", initial);
     }, []);

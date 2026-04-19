@@ -12,6 +12,7 @@ import path from "path";
 import { PaperSchema } from "../lib/schemas/paperSchema";
 import { TagSchema } from "../lib/schemas/tagSchema";
 import { NewsSchema } from "../lib/schemas/newsSchema";
+import { ProgramSchema } from "../lib/schemas/programSchema";
 import { ZodSchema } from "zod";
 
 const CONTENT_ROOT = path.join(process.cwd(), "content");
@@ -31,6 +32,11 @@ const CONTENT_TYPES = [
     name: "news",
     dir: path.join(CONTENT_ROOT, "news"),
     schema: NewsSchema,
+  },
+  {
+    name: "programs",
+    dir: path.join(CONTENT_ROOT, "programs"),
+    schema: ProgramSchema,
   },
 ];
 
