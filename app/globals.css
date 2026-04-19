@@ -81,6 +81,13 @@ p {
   font-weight: 400;
   font-size: 19px;
 }
+
+a {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
 .header {
   padding: 40px 60px;
   border-bottom: 1px solid #ddd;

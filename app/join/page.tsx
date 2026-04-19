@@ -1,7 +1,7 @@
 "use client"
 import { useRouter } from "next/navigation";
 
-export default function AboutPage() {
+export default function JoinPage() {
 
   const router = useRouter();
 
@@ -19,7 +19,7 @@ export default function AboutPage() {
 
         <div className="mt-[50px] lg:mt-[100px]">
           <ul className="flex flex-col lg:flex-row gap-[48px] w-full">
-            <li className="flex flex-col flex-1 outline outline-[1px] h-[397px] px-[30px] lg:pl-[41px] py-[31px]">
+            <li className="flex flex-col flex-1 outline outline-[1px] h-[397px] px-[30px] py-[31px] lg:pl-[41px]">
                 <h2 className="italic text-[70px]">Program Name</h2>
                 <p className="text-[19px] lg:w-[450px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
                 <button className="self-end w-[124px] h-[47px] text-[19px] outline outline-[1px] rounded-xl px-[13px] py-[10px]  mt-[40px] mr-[30px] cursor-pointer" onClick={() => router.push("/about")}>Apply &thinsp; &gt;</button>
