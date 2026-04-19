@@ -1,9 +1,13 @@
+import { getAllNews } from "@/lib/data/news";
+import BlogList from "@/components/blog/BlogList";
+
 export default function BlogPage() {
-    return (
-      <main>
-        <h1>Blog</h1>
-        <p>Blog posts will appear here.</p>
-      </main>
-    );
-  }
-  
+  const posts = getAllNews();
+
+  return (
+    <main style={{ paddingLeft: 87, paddingRight: 87, paddingTop: 0 }}>
+      <h2 style={{ marginBottom: 30 }}>Recent News</h2>
+      <BlogList posts={posts} />
+    </main>
+  );
+}
