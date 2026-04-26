@@ -64,15 +64,27 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
   }, [papers, searchQuery]);
 
   return (
-    <div style={{ color: "var(--foreground)" }}>
+    <div style={{ color: "var(--foreground)", width: "100%", maxWidth: "100%", overflowX: "hidden" }}>
       {/* Search + tags row */}
-      <div style={{ display: "flex", alignItems: "center", gap: 36, marginBottom: 27 }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 36,
+          rowGap: 14,
+          marginBottom: 27,
+          width: "100%",
+          maxWidth: "100%",
+          minWidth: 0,
+          flexWrap: "wrap",
+        }}
+      >
 
         {/* Search bar — fixed #F9E4C8 accent, always dark text inside */}
-        <div ref={searchRef} style={{ position: "relative", zIndex: 20 }}>
+        <div ref={searchRef} style={{ position: "relative", zIndex: 20, flex: "0 1 409px", minWidth: 0, maxWidth: "100%" }}>
           <div
             style={{
-              width: 409,
+              width: "100%",
               height: 47,
               background: "#F9E4C8",
               borderRadius: 16,
@@ -90,7 +102,7 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
                 position: "absolute",
                 left: 15.5,
                 top: 11.5,
-                width: 340,
+                width: "calc(100% - 68px)",
                 background: "transparent",
                 border: "none",
                 outline: "none",
@@ -101,7 +113,7 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
                 color: "#323C50",
               }}
             />
-            <div style={{ position: "absolute", left: 372, top: 12 }}>
+            <div style={{ position: "absolute", right: 13, top: 12 }}>
               <SearchIcon />
             </div>
           </div>
@@ -113,7 +125,7 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
                 position: "absolute",
                 top: 51,
                 left: 0,
-                width: 409,
+                width: "100%",
                 background: "var(--background)",
                 borderRadius: 16,
                 outline: "1px solid #F9E4C8",
@@ -152,45 +164,56 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
         </div>
 
         {/* Tag pills */}
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 9 }}>
-          {tags.map((tag) => {
-            const active = selectedTag === tag.id;
-            return (
-              <button
-                key={tag.id}
-                onClick={() => setSelectedTag(active ? null : tag.id)}
-                style={{
-                  height: 47,
-                  paddingLeft: 18,
-                  paddingRight: 18,
-                  paddingTop: 10,
-                  paddingBottom: 10,
-                  borderRadius: 16,
-                  outline: "1px solid var(--foreground)",
-                  outlineOffset: -1,
-                  background: active ? "var(--foreground)" : "transparent",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  cursor: "pointer",
-                  border: "none",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                <span
+        <div
+          style={{
+            flex: "1 1 320px",
+            minWidth: 0,
+            maxWidth: "100%",
+            overflowX: "auto",
+            overflowY: "hidden",
+          }}
+        >
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 9, width: "max-content" }}>
+            {tags.map((tag) => {
+              const active = selectedTag === tag.id;
+              return (
+                <button
+                  key={tag.id}
+                  onClick={() => setSelectedTag(active ? null : tag.id)}
                   style={{
-                    fontFamily: "'Be Vietnam Pro', sans-serif",
-                    fontWeight: 400,
-                    fontSize: 19,
-                    lineHeight: "24px",
-                    color: active ? "var(--background)" : "var(--foreground)",
+                    height: 47,
+                    paddingLeft: 18,
+                    paddingRight: 18,
+                    paddingTop: 10,
+                    paddingBottom: 10,
+                    borderRadius: 16,
+                    outline: "1px solid var(--foreground)",
+                    outlineOffset: -1,
+                    background: active ? "var(--foreground)" : "transparent",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    cursor: "pointer",
+                    border: "none",
+                    whiteSpace: "nowrap",
+                    flexShrink: 0,
                   }}
                 >
-                  {tag.label}
-                </span>
-              </button>
-            );
-          })}
+                  <span
+                    style={{
+                      fontFamily: "'Be Vietnam Pro', sans-serif",
+                      fontWeight: 400,
+                      fontSize: 19,
+                      lineHeight: "24px",
+                      color: active ? "var(--background)" : "var(--foreground)",
+                    }}
+                  >
+                    {tag.label}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
