@@ -16,6 +16,10 @@
   ],
   "year": 2019,
   "venue": "ICLR",
-  "tags": [],
+  "tags": [
+    "interpretability-mechanisms",
+    "language-meaning-semantics",
+    "evaluation-robustness"
+  ],
   "paperUrl": "https://openreview.net/pdf?id=SJzSgnRcKX"
 }

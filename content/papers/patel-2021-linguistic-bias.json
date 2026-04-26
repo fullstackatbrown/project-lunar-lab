@@ -7,6 +7,10 @@
   ],
   "year": 2021,
   "venue": "EMNLP",
-  "tags": [],
+  "tags": [
+    "bias-social-meaning-human-communication",
+    "language-meaning-semantics",
+    "evaluation-robustness"
+  ],
   "paperUrl": "https://aclanthology.org/2021.emnlp-main.790/"
 }

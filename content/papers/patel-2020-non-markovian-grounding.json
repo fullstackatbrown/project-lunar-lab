@@ -8,6 +8,9 @@
   ],
   "year": 2020,
   "venue": "RSS",
-  "tags": [],
+  "tags": [
+    "grounding-embodied-ai",
+    "compositionality-reasoning"
+  ],
   "paperUrl": "http://www.roboticsproceedings.org/rss16/p016.pdf"
 }

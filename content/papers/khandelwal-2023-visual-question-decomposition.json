@@ -8,6 +8,10 @@
   ],
   "year": 2023,
   "venue": "EMNLP",
-  "tags": [],
+  "tags": [
+    "multimodal-vision-language-models",
+    "compositionality-reasoning",
+    "evaluation-robustness"
+  ],
   "paperUrl": "https://arxiv.org/pdf/2311.06411.pdf"
 }

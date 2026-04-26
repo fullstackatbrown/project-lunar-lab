@@ -13,6 +13,9 @@
   ],
   "year": 2020,
   "venue": "Preprint",
-  "tags": [],
+  "tags": [
+    "bias-social-meaning-human-communication",
+    "evaluation-robustness"
+  ],
   "paperUrl": "https://arxiv.org/pdf/2010.06032.pdf"
 }

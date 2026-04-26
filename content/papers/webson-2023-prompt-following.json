@@ -9,6 +9,9 @@
   ],
   "year": 2023,
   "venue": "Findings of EMNLP",
-  "tags": [],
+  "tags": [
+    "evaluation-robustness",
+    "language-meaning-semantics"
+  ],
   "paperUrl": "https://arxiv.org/pdf/2301.07085.pdf"
 }

@@ -8,6 +8,9 @@
   ],
   "year": 2023,
   "venue": "NeurIPS",
-  "tags": [],
+  "tags": [
+    "compositionality-reasoning",
+    "interpretability-mechanisms"
+  ],
   "paperUrl": "https://arxiv.org/pdf/2301.10884.pdf"
 }

@@ -11,6 +11,9 @@
   ],
   "year": 2020,
   "venue": "ICRA",
-  "tags": [],
+  "tags": [
+    "grounding-embodied-ai",
+    "multimodal-vision-language-models"
+  ],
   "paperUrl": "https://ieeexplore.ieee.org/document/9197068"
 }

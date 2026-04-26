@@ -17,6 +17,10 @@
   ],
   "year": 2019,
   "venue": "*SEM",
-  "tags": [],
+  "tags": [
+    "interpretability-mechanisms",
+    "language-meaning-semantics",
+    "evaluation-robustness"
+  ],
   "paperUrl": "https://www.aclweb.org/anthology/S19-1026/"
 }

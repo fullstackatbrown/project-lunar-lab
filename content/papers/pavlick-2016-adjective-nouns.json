@@ -7,6 +7,9 @@
   ],
   "year": 2016,
   "venue": "ACL",
-  "tags": [],
+  "tags": [
+    "compositionality-reasoning",
+    "language-meaning-semantics"
+  ],
   "paperUrl": "https://www.aclweb.org/anthology/P16-1204.pdf"
 }

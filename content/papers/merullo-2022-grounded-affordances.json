@@ -9,6 +9,9 @@
   ],
   "year": 2022,
   "venue": "*SEM",
-  "tags": [],
+  "tags": [
+    "grounding-embodied-ai",
+    "multimodal-vision-language-models"
+  ],
   "paperUrl": "https://aclanthology.org/2022.starsem-1.23/"
 }

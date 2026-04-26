@@ -8,6 +8,9 @@
   ],
   "year": 2023,
   "venue": "Preprint",
-  "tags": [],
+  "tags": [
+    "interpretability-mechanisms",
+    "compositionality-reasoning"
+  ],
   "paperUrl": "https://arxiv.org/abs/2305.16130"
 }

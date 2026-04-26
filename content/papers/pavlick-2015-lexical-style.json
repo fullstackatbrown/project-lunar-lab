@@ -7,6 +7,9 @@
   ],
   "year": 2015,
   "venue": "NAACL",
-  "tags": [],
+  "tags": [
+    "bias-social-meaning-human-communication",
+    "language-meaning-semantics"
+  ],
   "paperUrl": "https://www.mitpressjournals.org/doi/pdf/10.1162/tacl_a_00083"
 }

@@ -9,6 +9,9 @@
   ],
   "year": 2023,
   "venue": "ICLR",
-  "tags": [],
+  "tags": [
+    "multimodal-vision-language-models",
+    "grounding-embodied-ai"
+  ],
   "paperUrl": "https://arxiv.org/abs/2209.15162"
 }

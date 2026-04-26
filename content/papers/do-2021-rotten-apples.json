@@ -7,6 +7,10 @@
   ],
   "year": 2021,
   "venue": "Findings of ACL",
-  "tags": [],
+  "tags": [
+    "compositionality-reasoning",
+    "evaluation-robustness",
+    "language-meaning-semantics"
+  ],
   "paperUrl": "https://aclanthology.org/2021.findings-acl.181/"
 }

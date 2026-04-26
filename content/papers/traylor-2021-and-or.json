@@ -8,6 +8,10 @@
   ],
   "year": 2021,
   "venue": "ACL",
-  "tags": [],
+  "tags": [
+    "compositionality-reasoning",
+    "evaluation-robustness",
+    "interpretability-mechanisms"
+  ],
   "paperUrl": "https://aclanthology.org/2021.acl-short.21.pdf"
 }

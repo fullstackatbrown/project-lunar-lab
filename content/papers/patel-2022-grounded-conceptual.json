@@ -7,6 +7,9 @@
   ],
   "year": 2022,
   "venue": "ICLR",
-  "tags": [],
+  "tags": [
+    "grounding-embodied-ai",
+    "language-meaning-semantics"
+  ],
   "paperUrl": "https://openreview.net/pdf?id=gJcEM8sxHK"
 }

@@ -12,6 +12,10 @@
   ],
   "year": 2023,
   "venue": "Preprint",
-  "tags": [],
+  "tags": [
+    "compositionality-reasoning",
+    "multimodal-vision-language-models",
+    "cognitive-science-theory"
+  ],
   "paperUrl": "https://arxiv.org/pdf/2310.09612.pdf"
 }

@@ -7,6 +7,9 @@
   ],
   "year": 2022,
   "venue": "NAACL",
-  "tags": [],
+  "tags": [
+    "language-meaning-semantics",
+    "evaluation-robustness"
+  ],
   "paperUrl": "https://arxiv.org/pdf/2109.01247.pdf"
 }

@@ -7,6 +7,10 @@
   ],
   "year": 2019,
   "venue": "CMCL Workshop (NAACL)",
-  "tags": [],
+  "tags": [
+    "grounding-embodied-ai",
+    "language-meaning-semantics",
+    "cognitive-science-theory"
+  ],
   "paperUrl": "http://arxiv.org/abs/2010.15225"
 }

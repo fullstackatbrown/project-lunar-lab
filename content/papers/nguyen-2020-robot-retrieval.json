@@ -11,6 +11,9 @@
   ],
   "year": 2020,
   "venue": "ICRA",
-  "tags": [],
+  "tags": [
+    "grounding-embodied-ai",
+    "language-meaning-semantics"
+  ],
   "paperUrl": "http://www.roboticsproceedings.org/rss16/p080.pdf"
 }

@@ -9,6 +9,9 @@
   ],
   "year": 2020,
   "venue": "EMNLP",
-  "tags": [],
+  "tags": [
+    "bias-social-meaning-human-communication",
+    "language-meaning-semantics"
+  ],
   "paperUrl": "https://arxiv.org/pdf/2010.02976.pdf"
 }

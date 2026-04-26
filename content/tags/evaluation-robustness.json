@@ -1,0 +1,6 @@
+{
+  "id": "evaluation-robustness",
+  "label": "Evaluation & Robustness",
+  "description": "Designing tests, benchmarks, and diagnostic methods for evaluating model behavior beyond task accuracy.",
+  "color": "#8B5CF6"
+}

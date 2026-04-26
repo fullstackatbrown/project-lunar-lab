@@ -9,6 +9,9 @@
   ],
   "year": 2020,
   "venue": "BlackboxNLP Workshop",
-  "tags": [],
+  "tags": [
+    "interpretability-mechanisms",
+    "evaluation-robustness"
+  ],
   "paperUrl": "https://www.aclweb.org/anthology/2020.blackboxnlp-1.4/"
 }

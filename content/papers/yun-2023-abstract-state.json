@@ -12,6 +12,10 @@
   ],
   "year": 2023,
   "venue": "EMNLP",
-  "tags": [],
+  "tags": [
+    "grounding-embodied-ai",
+    "cognitive-science-theory",
+    "interpretability-mechanisms"
+  ],
   "paperUrl": "https://arxiv.org/pdf/2311.02171.pdf"
 }

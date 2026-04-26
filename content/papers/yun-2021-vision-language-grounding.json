@@ -8,6 +8,10 @@
   ],
   "year": 2021,
   "venue": "Findings of EMNLP",
-  "tags": [],
+  "tags": [
+    "multimodal-vision-language-models",
+    "grounding-embodied-ai",
+    "language-meaning-semantics"
+  ],
   "paperUrl": "https://aclanthology.org/2021.findings-emnlp.370/"
 }

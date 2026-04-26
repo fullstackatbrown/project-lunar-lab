@@ -1,0 +1,6 @@
+{
+  "id": "interpretability-mechanisms",
+  "label": "Interpretability & Mechanisms",
+  "description": "Understanding what neural networks represent internally and how specific model mechanisms support behavior.",
+  "color": "#8B5CF6"
+}

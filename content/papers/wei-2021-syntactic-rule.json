@@ -9,6 +9,10 @@
   ],
   "year": 2021,
   "venue": "EMNLP",
-  "tags": [],
+  "tags": [
+    "language-meaning-semantics",
+    "evaluation-robustness",
+    "compositionality-reasoning"
+  ],
   "paperUrl": "https://aclanthology.org/2021.emnlp-main.72/"
 }

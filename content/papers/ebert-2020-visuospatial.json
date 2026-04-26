@@ -7,6 +7,10 @@
   ],
   "year": 2020,
   "venue": "*SEM",
-  "tags": [],
+  "tags": [
+    "grounding-embodied-ai",
+    "language-meaning-semantics",
+    "multimodal-vision-language-models"
+  ],
   "paperUrl": "http://arxiv.org/abs/2010.15225"
 }

@@ -7,6 +7,9 @@
   ],
   "year": 2016,
   "venue": "*SEM",
-  "tags": [],
+  "tags": [
+    "language-meaning-semantics",
+    "compositionality-reasoning"
+  ],
   "paperUrl": "https://www.aclweb.org/anthology/S16-2014.pdf"
 }

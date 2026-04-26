@@ -21,6 +21,9 @@
   ],
   "year": 2019,
   "venue": "ACL",
-  "tags": [],
+  "tags": [
+    "language-meaning-semantics",
+    "evaluation-robustness"
+  ],
   "paperUrl": "https://www.aclweb.org/anthology/P19-1439/"
 }

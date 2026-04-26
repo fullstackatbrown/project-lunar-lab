@@ -12,6 +12,10 @@
   ],
   "year": 2023,
   "venue": "Preprint",
-  "tags": [],
+  "tags": [
+    "multimodal-vision-language-models",
+    "compositionality-reasoning",
+    "interpretability-mechanisms"
+  ],
   "paperUrl": "https://arxiv.org/pdf/2212.10537.pdf"
 }

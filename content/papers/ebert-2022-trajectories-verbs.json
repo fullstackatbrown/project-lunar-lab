@@ -8,6 +8,9 @@
   ],
   "year": 2022,
   "venue": "NAACL",
-  "tags": [],
+  "tags": [
+    "grounding-embodied-ai",
+    "language-meaning-semantics"
+  ],
   "paperUrl": "https://aclanthology.org/2022.naacl-main.206.pdf"
 }

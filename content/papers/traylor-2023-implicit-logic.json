@@ -8,6 +8,10 @@
   ],
   "year": 2023,
   "venue": "ICLR",
-  "tags": [],
+  "tags": [
+    "compositionality-reasoning",
+    "grounding-embodied-ai",
+    "cognitive-science-theory"
+  ],
   "paperUrl": "https://openreview.net/pdf?id=HVoJCRLByVk"
 }
