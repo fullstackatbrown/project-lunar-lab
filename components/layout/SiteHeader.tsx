@@ -10,6 +10,12 @@ export default function SiteHeader() {
     return (
         <header
             className={"header"}
+            style={{
+                position: "sticky",
+                top: 0,
+                zIndex: 1000,
+                backgroundColor: "var(--background)",
+            }}
         >
             <div
                 style={{
