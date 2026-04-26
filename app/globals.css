@@ -33,8 +33,10 @@ body {
   display: flex;
   gap: 40px;
   font-size: 21px;
-  font-family: Be Vietnam Pro;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 400;
+  color: var(--foreground);
+  overflow-wrap: break-word;
 }
 
 .basic_paragraph{
@@ -89,10 +91,23 @@ a {
 }
 
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   padding: 40px 60px;
   border-bottom: 1px solid #ddd;
+  background-color: var(--background);
   height: 150px;
   max-width: 1728px;
+}
+
+.header a {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  overflow-wrap: inherit;
+  text-decoration: none;
 }
 
 .moon_button{

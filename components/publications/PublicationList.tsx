@@ -9,6 +9,39 @@ interface PublicationListProps {
   tags: Tag[];
 }
 
+const TAGS_QUERY_PARAM = "tags";
+
+function parseTagsFromSearch(search: string, validTagIds: Set<string>) {
+  const params = new URLSearchParams(search);
+  const tagsParam = params.get(TAGS_QUERY_PARAM);
+  if (!tagsParam) return [];
+
+  const seen = new Set<string>();
+  return tagsParam
+    .split(",")
+    .map((tagId) => tagId.trim())
+    .filter((tagId) => {
+      if (!validTagIds.has(tagId) || seen.has(tagId)) return false;
+      seen.add(tagId);
+      return true;
+    });
+}
+
+function updateTagsInUrl(selectedTags: string[]) {
+  const params = new URLSearchParams(window.location.search);
+  params.delete(TAGS_QUERY_PARAM);
+
+  const otherQuery = params.toString();
+  const tagsQuery =
+    selectedTags.length > 0
+      ? `${TAGS_QUERY_PARAM}=${selectedTags.map(encodeURIComponent).join(",")}`
+      : "";
+  const query = [otherQuery, tagsQuery].filter(Boolean).join("&");
+  const nextUrl = `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`;
+
+  window.history.replaceState(null, "", nextUrl);
+}
+
 // Uses currentColor so it inherits var(--foreground) from parent
 function ArrowExternalIcon() {
   return (
@@ -31,9 +64,12 @@ function SearchIcon() {
 
 export default function PublicationList({ papers, tags }: PublicationListProps) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
+  const didInitializeUrlTagsRef = useRef(false);
+  const skipNextUrlSyncRef = useRef(false);
+  const validTagIds = useMemo(() => new Set(tags.map((tag) => tag.id)), [tags]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -45,16 +81,52 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    function syncSelectedTagsFromUrl() {
+      skipNextUrlSyncRef.current = true;
+      setSelectedTags(parseTagsFromSearch(window.location.search, validTagIds));
+    }
+
+    syncSelectedTagsFromUrl();
+    didInitializeUrlTagsRef.current = true;
+    window.addEventListener("popstate", syncSelectedTagsFromUrl);
+    return () => window.removeEventListener("popstate", syncSelectedTagsFromUrl);
+  }, [validTagIds]);
+
+  useEffect(() => {
+    if (!didInitializeUrlTagsRef.current) return;
+    if (skipNextUrlSyncRef.current) {
+      skipNextUrlSyncRef.current = false;
+      return;
+    }
+    updateTagsInUrl(selectedTags);
+  }, [selectedTags]);
+
+  function toggleTag(tagId: string) {
+    setSelectedTags((currentTags) =>
+      currentTags.includes(tagId)
+        ? currentTags.filter((selectedTag) => selectedTag !== tagId)
+        : [...currentTags, tagId]
+    );
+  }
+
+  function clearFilters() {
+    setSearchQuery("");
+    setSelectedTags([]);
+    setIsSearchFocused(false);
+  }
+
   const filteredPapers = useMemo(() => {
     return papers.filter((paper) => {
+      const normalizedQuery = searchQuery.toLowerCase();
       const matchesSearch =
         searchQuery === "" ||
-        paper.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        paper.authors.some((a) => a.toLowerCase().includes(searchQuery.toLowerCase()));
-      const matchesTag = selectedTag === null || paper.tags.includes(selectedTag);
-      return matchesSearch && matchesTag;
+        paper.title.toLowerCase().includes(normalizedQuery) ||
+        paper.authors.some((a) => a.toLowerCase().includes(normalizedQuery));
+      const matchesTags = selectedTags.every((tagId) => paper.tags.includes(tagId));
+      return matchesSearch && matchesTags;
     });
-  }, [papers, searchQuery, selectedTag]);
+  }, [papers, searchQuery, selectedTags]);
 
   const suggestions = useMemo(() => {
     if (searchQuery.length < 2) return [];
@@ -175,11 +247,11 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
         >
           <div style={{ display: "inline-flex", alignItems: "center", gap: 9, width: "max-content" }}>
             {tags.map((tag) => {
-              const active = selectedTag === tag.id;
+              const active = selectedTags.includes(tag.id);
               return (
                 <button
                   key={tag.id}
-                  onClick={() => setSelectedTag(active ? null : tag.id)}
+                  onClick={() => toggleTag(tag.id)}
                   style={{
                     height: 47,
                     paddingLeft: 18,
@@ -213,6 +285,41 @@ export default function PublicationList({ papers, tags }: PublicationListProps) 
                 </button>
               );
             })}
+            {(searchQuery !== "" || selectedTags.length > 0) && (
+              <button
+                onClick={clearFilters}
+                style={{
+                  height: 47,
+                  paddingLeft: 18,
+                  paddingRight: 18,
+                  paddingTop: 10,
+                  paddingBottom: 10,
+                  borderRadius: 16,
+                  outline: "1px solid var(--foreground)",
+                  outlineOffset: -1,
+                  background: "transparent",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  border: "none",
+                  whiteSpace: "nowrap",
+                  flexShrink: 0,
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "'Be Vietnam Pro', sans-serif",
+                    fontWeight: 400,
+                    fontSize: 19,
+                    lineHeight: "24px",
+                    color: "var(--foreground)",
+                  }}
+                >
+                  Clear Filters
+                </span>
+              </button>
+            )}
           </div>
         </div>
       </div>
