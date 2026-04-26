@@ -24,7 +24,16 @@ export default function SiteHeader() {
                 <div style={{ display: "flex", alignItems: "center", gap: 16,}}>
                     <Link href={"/"}>
                         <Logo size = {82} /> </Link>
-                        <h3 style={{fontSize: "45"}} >
+                        <h3
+                            style={{
+                                color: "var(--foreground)",
+                                fontSize: 45,
+                                fontFamily: "'FreightText Pro', serif",
+                                fontStyle: "italic",
+                                fontWeight: 400,
+                                overflowWrap: "break-word",
+                            }}
+                        >
                             <Link href={"/"}>Lunar Lab </Link>
                         </h3>
 
