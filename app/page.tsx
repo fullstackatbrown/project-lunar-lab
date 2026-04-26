@@ -1,6 +1,15 @@
+import Link from "next/link";
 import { getLatestNews } from "@/lib/data/news";
 import type { NewsItem } from "@/lib/schemas/newsSchema";
 import HeroCarousel from "@/components/home/HeroCarousel";
+
+const DESCRIPTION_WORD_LIMIT = 60;
+
+function truncateWords(text: string, limit: number): string {
+  const words = text.trim().split(/\s+/);
+  if (words.length <= limit) return text;
+  return words.slice(0, limit).join(" ") + "…";
+}
 
 // Format ISO date string → { month: "JANUARY", year: "2025" }
 function formatDate(dateStr: string) {
@@ -54,44 +63,24 @@ function NewsRow({ item }: { item: NewsItem }) {
           {year}
         </div>
 
-        {/* Title + description */}
-        <div>
-          {item.url ? (
-            <a
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ textDecoration: "none", color: "var(--foreground)" }}
-            >
-              <div
-                style={{
-                  fontFamily: "'FreightText Pro', serif",
-                  fontStyle: "italic",
-                  fontWeight: 400,
-                  fontSize: 50,
-                  lineHeight: "49px",
-                  color: "var(--foreground)",
-                  marginBottom: 16,
-                }}
-              >
-                {item.title}
-              </div>
-            </a>
-          ) : (
-            <div
-              style={{
-                fontFamily: "'FreightText Pro', serif",
-                fontStyle: "italic",
-                fontWeight: 400,
-                fontSize: 50,
-                lineHeight: "49px",
-                color: "var(--foreground)",
-                marginBottom: 16,
-              }}
-            >
-              {item.title}
-            </div>
-          )}
+        {/* Title + description — links to /blog/[id] */}
+        <Link
+          href={`/blog/${item.id}`}
+          style={{ textDecoration: "none", color: "var(--foreground)", display: "block" }}
+        >
+          <div
+            style={{
+              fontFamily: "'FreightText Pro', serif",
+              fontStyle: "italic",
+              fontWeight: 400,
+              fontSize: 50,
+              lineHeight: "49px",
+              color: "var(--foreground)",
+              marginBottom: 16,
+            }}
+          >
+            {item.title}
+          </div>
           <div
             style={{
               fontFamily: "'Be Vietnam Pro', sans-serif",
@@ -101,9 +90,9 @@ function NewsRow({ item }: { item: NewsItem }) {
               color: "var(--foreground)",
             }}
           >
-            {item.description}
+            {truncateWords(item.description, DESCRIPTION_WORD_LIMIT)}
           </div>
-        </div>
+        </Link>
 
         {/* Image placeholder */}
         <div
