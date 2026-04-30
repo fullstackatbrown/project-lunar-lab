@@ -1,0 +1,9 @@
+{
+  "id": "bigai",
+  "name": "BigAI",
+  "image": "bigai.png",
+  "description": "Brown Integrative General Artificial Intelligence",
+  "url": "http://bigai.cs.brown.edu/people.html",
+  "logoStyle": "photo",
+  "order": 1
+}

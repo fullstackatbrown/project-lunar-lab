@@ -13,6 +13,9 @@ import { PaperSchema } from "../lib/schemas/paperSchema";
 import { TagSchema } from "../lib/schemas/tagSchema";
 import { NewsSchema } from "../lib/schemas/newsSchema";
 import { ProgramSchema } from "../lib/schemas/programSchema";
+import { MemberSchema } from "../lib/schemas/memberSchema";
+import { AlumnusSchema } from "../lib/schemas/alumnusSchema";
+import { CollaboratorSchema } from "../lib/schemas/collaboratorSchema";
 import { ZodSchema } from "zod";
 
 const CONTENT_ROOT = path.join(process.cwd(), "content");
@@ -37,6 +40,21 @@ const CONTENT_TYPES = [
     name: "programs",
     dir: path.join(CONTENT_ROOT, "programs"),
     schema: ProgramSchema,
+  },
+  {
+    name: "members",
+    dir: path.join(CONTENT_ROOT, "members"),
+    schema: MemberSchema,
+  },
+  {
+    name: "alumni",
+    dir: path.join(CONTENT_ROOT, "alumni"),
+    schema: AlumnusSchema,
+  },
+  {
+    name: "collaborators",
+    dir: path.join(CONTENT_ROOT, "collaborators"),
+    schema: CollaboratorSchema,
   },
 ];
 

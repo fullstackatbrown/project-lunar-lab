@@ -1,0 +1,10 @@
+{
+  "id": "jack-merullo",
+  "name": "Jack Merullo",
+  "role": "Ph.D. Student",
+  "category": "phd",
+  "image": "jack_merullo.png",
+  "description": "Mechanistic interpretability, representation learning, large language models",
+  "url": "https://jmerullo.github.io/",
+  "order": 1
+}

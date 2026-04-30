@@ -1,0 +1,9 @@
+{
+  "id": "blt",
+  "name": "BLT",
+  "image": "blt.png",
+  "description": "Brown Language and Thought Lab",
+  "url": "https://sites.brown.edu/bltlab/",
+  "logoStyle": "photo",
+  "order": 3
+}

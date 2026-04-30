@@ -3,14 +3,14 @@
 import { useState, useEffect, useRef } from "react";
 
 const SLIDES = [
-  { color: "#D9D9D9" },
-  { color: "#323C50" },
-  { color: "#F9E4C8" },
-  { color: "#8B9BB4" },
-  { color: "#C4B5A0" },
+  { src: "/images/pic1.JPG", alt: "Lab photo 1" },
+  { src: "/images/pic2.JPG", alt: "Lab photo 2" },
+  { src: "/images/pic3.JPG", alt: "Lab photo 3" },
+  { src: "/images/pic4.JPG", alt: "Lab photo 4" },
+  { src: "/images/pic5.JPG", alt: "Lab photo 5" },
 ];
 
-const INTERVAL_MS = 3000;
+const INTERVAL_MS = 5000;
 
 // Lunar phase dots — the middle dot highlights the active slide
 function LunarDots({ active }: { active: number }) {
@@ -104,12 +104,30 @@ export default function HeroCarousel() {
         marginTop: 48,
         position: "relative",
         overflow: "hidden",
-        transition: "background-color 0.6s ease",
-        background: SLIDES[current].color,
+        background: "#D9D9D9",
       }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
+      {/* Lab photos — stacked and cross-faded */}
+      {SLIDES.map((slide, i) => (
+        <img
+          key={slide.src}
+          src={slide.src}
+          alt={slide.alt}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center",
+            opacity: current === i ? 1 : 0,
+            transition: "opacity 0.6s ease",
+          }}
+        />
+      ))}
+
       {/* Lunar phase dots — centered at bottom, active dot inverts */}
       <div
         style={{

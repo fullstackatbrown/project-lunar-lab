@@ -1,0 +1,10 @@
+{
+  "id": "ellie-pavlick",
+  "name": "Ellie Pavlick",
+  "role": "Assistant Professor",
+  "category": "professor",
+  "image": "ellie_pavlick.png",
+  "description": "Proud advisor of the below students. :)",
+  "url": "https://cs.brown.edu/people/epavlick/",
+  "order": 1
+}

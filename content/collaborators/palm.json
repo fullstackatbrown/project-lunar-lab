@@ -1,0 +1,9 @@
+{
+  "id": "palm",
+  "name": "PALM",
+  "image": "palm.png",
+  "description": "Perception, Action, and Learning Lab",
+  "url": "https://chensun.me/",
+  "logoStyle": "photo",
+  "order": 4
+}

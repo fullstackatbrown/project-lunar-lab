@@ -1,0 +1,8 @@
+{
+  "id": "alumnus-id",
+  "name": "Alumnus Name",
+  "role": "Original lab position (e.g. Ph.D. Student, MS Student, Undergraduate)",
+  "nextPosition": "Current job or current affiliation (optional)",
+  "url": "https://example.com",
+  "order": 1
+}

@@ -12,9 +12,9 @@ export default function JoinPage() {
           <h1 className="italic text-[70px] mb-[20px]">Join the Lab</h1>
           <div className="text-[19px] mb-[30px]">
             <p>For Brown Students (PhD, Masters, Undergraduates)</p>
-            <p>Please sign up for the <a href="https://lists.cs.brown.edu/wws/info/nlu" className="cursor-pointer underline">NLU mailing list</a> for announcements about lab meetings and project openings:</p>
+            <p>Please sign up for the NLU mailing list for announcements about lab meetings and project openings:</p>
           </div>
-          <button className="text-[19px] text-[#F9E4C8] w-[270px] h-[47px] bg-[#323C50] rounded-2xl cursor-pointer [html[data-theme=dark]_&]:bg-[#F9E4C8] [html[data-theme=dark]_&]:text-[#323C50]" onClick={() => router.push("/about")}>Sign up to mailing list &thinsp; &gt;</button>
+          <button className="text-[19px] text-[#F9E4C8] w-[270px] h-[47px] bg-[#323C50] rounded-2xl cursor-pointer [html[data-theme=dark]_&]:bg-[#F9E4C8] [html[data-theme=dark]_&]:text-[#323C50]" onClick={() => window.open("https://lists.cs.brown.edu/wws/info/nlu", "_blank", "noopener,noreferrer")}>Sign up to mailing list &thinsp; &gt;</button>
         </header>
 
         <div className="mt-[50px] lg:mt-[100px]">

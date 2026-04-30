@@ -1,0 +1,9 @@
+{
+  "id": "collaborator-id",
+  "name": "Collaborator Name",
+  "image": "filename.png",
+  "description": "Short description.",
+  "url": "https://example.com",
+  "logoStyle": "logo | photo",
+  "order": 1
+}
