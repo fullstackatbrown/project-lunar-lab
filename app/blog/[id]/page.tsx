@@ -45,7 +45,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         </Link>
 
         <div className="flex justify-between my-[30px]">
-          <h1 className="text-[70px] leading-none tracking-tighter mr-[40px]">{post.title}</h1>
+          <h1 className="text-[56px] leading-none tracking-tighter mr-[40px]">{post.title}</h1>
           <p className="self-start mr-[40px] text-[14px] max-w-[80px]">{formatFullDate(post.date)}</p>
         </div>
 
