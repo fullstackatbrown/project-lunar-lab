@@ -1,0 +1,10 @@
+{
+  "id": "member-id",
+  "name": "Member Name",
+  "role": "Title or Role (omit for undergraduates)",
+  "category": "professor | phd | graduate | undergraduate",
+  "image": "filename.png",
+  "description": "Short research focus / bio. Omit for undergraduates.",
+  "url": "https://example.com",
+  "order": 1
+}

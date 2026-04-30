@@ -1,0 +1,9 @@
+{
+  "id": "carney-ccbs",
+  "name": "Carney CCBS",
+  "image": "ccbs.png",
+  "description": "Center for Computational Brain Science",
+  "url": "https://ccbs.carney.brown.edu/",
+  "logoStyle": "photo",
+  "order": 2
+}
