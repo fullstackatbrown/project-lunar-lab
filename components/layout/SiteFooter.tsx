@@ -27,20 +27,11 @@ export default function SiteFooter() {
         <footer
             className={"footer"}
         >
-            <div
-                className={beVietnam.className}
-                style={{
-                    maxWidth: 1200,
-                    margin: "0 auto",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                }}
-            >
+            <div className={`${beVietnam.className} footer-row`}>
                 {/* LEFT: Contact */}
                 <div>
 
-                    <h3 style={{fontSize: "40"}}> Contact us </h3>
+                    <h3 style={{fontSize: 40}}> Contact us </h3>
 
                     <p>
                         lunarlab@gmail.com
@@ -52,16 +43,7 @@ export default function SiteFooter() {
                 </div>
 
 
-                <div
-                    style={{
-                        maxWidth: 1200,
-                        paddingTop: 100,
-                        paddingLeft: 50,
-                        display: "flex",
-                        columnGap: 0,
-                        flexDirection: "row",
-                    }}
-                >
+                <div className="footer-brand">
                     <Logo size = {50}/>
                     <p
                         style = {{
@@ -70,8 +52,7 @@ export default function SiteFooter() {
                             transform: "skewX(5deg)",
                             fontSize: 20,
                             fontWeight: 400,
-                            marginLeft: -20,
-                            marginTop: -3,
+                            marginLeft: -10,
                         }}
                     >
                         Lunar Lab
