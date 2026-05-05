@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { withBasePath } from "@/lib/basePath";
 
 const SLIDES = [
-  { src: "/images/pic1.JPG", alt: "Lab photo 1" },
-  { src: "/images/pic2.JPG", alt: "Lab photo 2" },
-  { src: "/images/pic3.JPG", alt: "Lab photo 3" },
-  { src: "/images/pic4.JPG", alt: "Lab photo 4" },
-  { src: "/images/pic5.JPG", alt: "Lab photo 5" },
+  { src: withBasePath("/images/pic1.JPG"), alt: "Lab photo 1" },
+  { src: withBasePath("/images/pic2.JPG"), alt: "Lab photo 2" },
+  { src: withBasePath("/images/pic3.JPG"), alt: "Lab photo 3" },
+  { src: withBasePath("/images/pic4.JPG"), alt: "Lab photo 4" },
+  { src: withBasePath("/images/pic5.JPG"), alt: "Lab photo 5" },
 ];
 
 const INTERVAL_MS = 5000;

@@ -5,6 +5,7 @@ import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
 
 import { ThemeProvider } from "@/context/themeContext";
+import { basePath } from "@/lib/basePath";
 
 export const metadata: Metadata = {
   title: "LUNAR Lab",
@@ -26,10 +27,16 @@ export default function RootLayout({
     })();
   `;
 
+  const footerBgCss = `
+    :root { --footer-bg: url(${basePath}/astronaut-light-mode.png); }
+    [data-theme="dark"] { --footer-bg: url(${basePath}/astronaut-dark-mode.png); }
+  `;
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/rsx0kcp.css" />
+        <style dangerouslySetInnerHTML={{ __html: footerBgCss }} />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="antialiased">
