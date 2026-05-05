@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { getAllNews, getNewsById } from "@/lib/data/news";
+import { withBasePath } from "@/lib/basePath";
 
 type PageProps = {
     params: {
@@ -53,7 +54,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="mb-[40px]">
             {post.image ? (
                 <Image
-                    src={post.image}
+                    src={withBasePath(post.image)}
                     alt={post.title}
                     width={900}
                     height={500}

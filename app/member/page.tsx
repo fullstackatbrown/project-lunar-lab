@@ -4,6 +4,7 @@ import { getAllCollaborators } from "@/lib/data/collaborators";
 import type { Member } from "@/lib/schemas/memberSchema";
 import type { Alumnus } from "@/lib/schemas/alumnusSchema";
 import type { Collaborator } from "@/lib/schemas/collaboratorSchema";
+import { withBasePath } from "@/lib/basePath";
 
 // ─── Shared styles ─────────────────────────────────────────────────────────
 
@@ -119,7 +120,7 @@ function chunkPairs<T>(items: T[]): Array<[T, T | undefined]> {
 
 // Renders professors, PhD students, and graduate students with photo + role + description.
 function MemberCard({ member }: { member: Member }) {
-  const imageSrc = member.image ?? DEFAULT_MEMBER_IMAGE;
+  const imageSrc = withBasePath(member.image ?? DEFAULT_MEMBER_IMAGE);
 
   const imageEl = (
     <img
@@ -196,7 +197,7 @@ function CollaboratorCard({ collab }: { collab: Collaborator }) {
   const inner = (
     <div style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
       <img
-        src={collab.image}
+        src={withBasePath(collab.image)}
         alt={collab.name}
         style={{
           width: isLogo ? 251 : 375,
