@@ -43,23 +43,6 @@ export default function SiteFooter() {
                 </div>
 
 
-                <div className="footer-brand">
-                    <Logo size = {50}/>
-                    <p
-                        style = {{
-                            fontFamily: "FreightText Pro",
-                            fontStyle: "italic",
-                            transform: "skewX(5deg)",
-                            fontSize: 20,
-                            fontWeight: 400,
-                            marginLeft: -10,
-                        }}
-                    >
-                        Lunar Lab
-                    </p>
-                </div>
-
-
                 {/* RIGHT: Icons */}
                 <div style={{ display: "flex", gap: 28, alignItems: "center" }}>
 
@@ -88,6 +71,34 @@ export default function SiteFooter() {
 
                 </div>
             </div>
+
+            {/* LOGO — independent. Tune LOGO_LEFT / LOGO_TOP without affecting the text. */}
+            <div
+                style={{
+                    position: "absolute",
+                    left: "calc(50% - -5px)",  /* 50px logo width + 10px gap left of footer center (astronaut center) */
+                    top: "66%",                /* vertically centered = parallel to astronaut middle */
+                    transform: "translateY(-50%)",
+                }}
+            >
+                <Logo size={50} />
+            </div>
+
+            {/* "Lunar Lab" TEXT — independent. Tune LEFT / TOP without affecting the logo. */}
+            <p
+                style={{
+                    position: "absolute",
+                    left: "calc(50% - -37px)",   /* adjacent to logo's right edge */
+                    top: "60%",
+                    transform: "translateY(-50%) skewX(5deg)",
+                    fontFamily: "FreightText Pro",
+                    fontStyle: "italic",
+                    fontSize: 20,
+                    fontWeight: 400,
+                }}
+            >
+                Lunar Lab
+            </p>
         </footer>
     );
 }
