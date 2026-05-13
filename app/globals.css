@@ -115,6 +115,7 @@ a {
 }
 
 .footer{
+  position: relative;
   padding: clamp(24px, 5vw, 60px) clamp(16px, 6vw, 80px);
   border-top: 1px solid #ddd;
   margin-top: 80px;
@@ -136,8 +137,10 @@ a {
 
 .footer-brand{
   display: flex;
-  flex-direction: row;
-  align-items: center;
+    flex-direction: row;
+    align-items: center;
+    margin-left: -30px;    /* shift right */
+    margin-top: 20px;
 }
 
 @media (max-width: 768px) {
